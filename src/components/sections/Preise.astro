@@ -1,0 +1,95 @@
+---
+import Button from '../Button.astro';
+import Check from '../../assets/icons/check.svg';
+import { whatsappLink } from '../../site';
+
+const packages = [
+  {
+    tag: 'Behörden-Sporttests',
+    title: 'Mission: Einsatzbereit',
+    audience: 'Für: Polizei, Armee, Grenzwacht',
+    price: "CHF 1'450.–",
+    priceNote: 'oder 3 × CHF 490.–',
+    features: ['3 Monate Laufzeit', '12 × Personal Training (1:1)', 'Exakte Test-Simulation', 'Trainingsplan für freie Tage', 'Mentaltraining'],
+    featured: true,
+  },
+  {
+    tag: '10er-Abo',
+    title: 'Stahlmann Kondition',
+    audience: 'Für: Athletinnen, Athleten & Wiedereinsteiger',
+    price: "CHF 1'350.–",
+    priceNote: 'CHF 135.– pro Session',
+    features: ['10 × Kondition & Athletik (1:1)', 'Flexibel buchbare Slots', 'Ideal für Schichtarbeitende', 'Outdoor oder im Partner-Gym'],
+    featured: false,
+  },
+  {
+    tag: 'Premium-Coaching',
+    title: 'Mind & Body Transformation',
+    audience: 'Für: Persönliche Weiterentwicklung',
+    price: 'CHF 450.–',
+    priceNote: 'pro Monat · mind. 3 Monate',
+    features: ['Wöchentliches 1:1 Training', 'Wöchentlicher Mindset-Call (30 Min.)', 'Gewohnheiten & Routinen', 'WhatsApp-Support bei Motivationslöchern'],
+    featured: false,
+  },
+];
+---
+
+<section id="preise" class="bg-ink-850 py-20 sm:py-24 lg:py-30">
+  <div class="container-page flex flex-col gap-12 lg:gap-14">
+    <div class="flex max-w-[47.5rem] flex-col gap-4">
+      <p class="eyebrow">Preise &amp; Pakete</p>
+      <h2 class="font-display text-[2.25rem]/[1.08] tracking-[-0.015em] text-balance sm:text-5xl/[1.08]">Wähle deine Mission</h2>
+    </div>
+
+    <ul role="list" class="mx-auto grid w-full max-w-xl gap-6 lg:max-w-none lg:grid-cols-3">
+      {
+        packages.map((pkg) => (
+          <li
+            class:list={[
+              'flex flex-col justify-between gap-8 rounded-[1.125rem] px-6 py-8 sm:px-8 sm:py-9',
+              pkg.featured ? 'border-2 border-pulse bg-pulse-tint' : 'border border-line bg-ink-900',
+            ]}
+          >
+            <div class="flex flex-col items-start gap-5">
+              <p
+                class:list={[
+                  'rounded-full px-3 py-1.5 text-[0.71875rem] leading-none font-bold tracking-[0.12em] uppercase',
+                  pkg.featured ? 'bg-pulse text-pulse-ink' : 'bg-ink-750 text-pulse',
+                ]}
+              >
+                {pkg.tag}
+              </p>
+              <h3 class="font-display text-[1.625rem]/[1.15] tracking-[-0.01em]">{pkg.title}</h3>
+              <p class="text-base/[1.45] text-fg-subtle sm:text-sm/[1.45]">{pkg.audience}</p>
+              <div class="flex w-full flex-col gap-1 border-b border-line pt-2 pb-5">
+                <p class="font-display text-[2.25rem] tracking-[-0.015em] tabular-nums sm:text-[2.5rem]">{pkg.price}</p>
+                <p class="text-base font-medium text-fg-muted tabular-nums sm:text-sm">{pkg.priceNote}</p>
+              </div>
+              <ul role="list" class="flex flex-col gap-3">
+                {pkg.features.map((feature) => (
+                  <li class="flex gap-3 text-base/[1.4] sm:text-[0.96875rem]/[1.4]">
+                    <Check class="h-lh shrink-0" aria-hidden="true" />
+                    {feature}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <Button
+              href={whatsappLink(`Hallo Thomas, ich interessiere mich für das Paket «${pkg.title}».`)}
+              variant={pkg.featured ? 'primary' : 'outline'}
+              icon
+              external
+              class="w-full"
+            >
+              Via WhatsApp anfragen
+            </Button>
+          </li>
+        ))
+      }
+    </ul>
+
+    <p class="max-w-[56.25rem] text-base/[1.5] text-fg-subtle sm:text-sm/[1.5]">
+      Alle Preise in CHF inkl. allfälliger MWST. Ort: Outdoor oder Partner-Gym in der Region Zürich, Aargau und Zug.
+    </p>
+  </div>
+</section>

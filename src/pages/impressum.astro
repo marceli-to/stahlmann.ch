@@ -1,0 +1,36 @@
+---
+import LegalLayout from '../layouts/LegalLayout.astro';
+import { SITE } from '../site';
+---
+
+<LegalLayout title="Impressum">
+  <h2>Kontakt</h2>
+  <p>
+    <strong>{SITE.name}</strong><br />
+    {SITE.owner}<br />
+    {SITE.address.street}<br />
+    {SITE.address.city}<br />
+    Schweiz
+  </p>
+  <p>
+    E-Mail: {SITE.address.email}<br />
+    Telefon: {SITE.address.phone}
+  </p>
+
+  <h2>Verantwortlich für den Inhalt</h2>
+  <p>{SITE.owner}</p>
+
+  <h2>Haftungsausschluss</h2>
+  <p>
+    Der Autor übernimmt keinerlei Gewähr hinsichtlich der inhaltlichen Richtigkeit, Genauigkeit, Aktualität,
+    Zuverlässigkeit und Vollständigkeit der Informationen. Haftungsansprüche gegen den Autor wegen Schäden materieller
+    oder immaterieller Art, welche aus dem Zugriff oder der Nutzung bzw. Nichtnutzung der veröffentlichten Informationen
+    entstanden sind, werden ausgeschlossen.
+  </p>
+
+  <h2>Urheberrechte</h2>
+  <p>
+    Die Urheber- und alle anderen Rechte an Inhalten, Bildern, Fotos oder anderen Dateien auf dieser Website gehören
+    ausschliesslich {SITE.owner} oder den speziell genannten Rechteinhabern.
+  </p>
+</LegalLayout>

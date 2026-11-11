@@ -1,0 +1,92 @@
+---
+import Logo from './Logo.astro';
+import Button from './Button.astro';
+import { whatsappLink } from '../site';
+
+const nav = [
+  { label: 'Story', href: '/#story' },
+  { label: 'Angebot', href: '/#angebot' },
+  { label: 'Preise', href: '/#preise' },
+  { label: 'Kontakt', href: '/#kontakt' },
+];
+
+const ctaHref = whatsappLink('Hallo Thomas, ich interessiere mich für ein kostenloses Erstgespräch.');
+---
+
+<header class="sticky top-0 z-50 border-b border-line bg-ink-900/95 backdrop-blur-md">
+  <div class="container-page flex items-center justify-between gap-6 py-4 lg:py-5.5">
+    <Logo />
+
+    <nav aria-label="Hauptnavigation" class="flex items-center gap-10 max-lg:hidden">
+      <ul role="list" class="flex items-center gap-10">
+        {
+          nav.map((item) => (
+            <li class="text-base font-medium tracking-[0.01em]">
+              <a href={item.href} class="rounded-sm text-fg hover:text-pulse focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-pulse">
+                {item.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+      <Button href={ctaHref} size="sm" external>Erstgespräch</Button>
+    </nav>
+
+    <button
+      type="button"
+      class="-m-2 inline-flex size-11 items-center justify-center rounded-lg text-fg hover:bg-white/5 focus-visible:outline-2 focus-visible:outline-pulse lg:hidden"
+      aria-controls="mobile-menu"
+      aria-expanded="false"
+      data-menu-toggle
+    >
+      <span class="sr-only">Menü öffnen</span>
+      <svg data-icon-open class="size-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+        <path d="M4 7h16M4 12h16M4 17h16"></path>
+      </svg>
+      <svg data-icon-close class="hidden size-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+        <path d="M6 6l12 12M18 6L6 18"></path>
+      </svg>
+    </button>
+  </div>
+
+  <nav id="mobile-menu" aria-label="Hauptnavigation" class="hidden border-t border-line lg:hidden" data-menu-panel>
+    <div class="container-page flex flex-col gap-6 pt-4 pb-8">
+      <ul role="list" class="flex flex-col">
+        {
+          nav.map((item) => (
+            <li class="border-b border-line text-xl font-semibold">
+              <a href={item.href} class="flex py-4 text-fg hover:text-pulse" data-menu-link>
+                {item.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+      <Button href={ctaHref} size="lg" icon external class="w-full">Kostenloses Erstgespräch</Button>
+    </div>
+  </nav>
+</header>
+
+<script>
+  const toggle = document.querySelector<HTMLButtonElement>('[data-menu-toggle]');
+  const panel = document.querySelector<HTMLElement>('[data-menu-panel]');
+
+  if (toggle && panel) {
+    const setOpen = (open: boolean) => {
+      toggle.setAttribute('aria-expanded', String(open));
+      toggle.querySelector('.sr-only')!.textContent = open ? 'Menü schliessen' : 'Menü öffnen';
+      toggle.querySelector('[data-icon-open]')?.classList.toggle('hidden', open);
+      toggle.querySelector('[data-icon-close]')?.classList.toggle('hidden', !open);
+      panel.classList.toggle('hidden', !open);
+    };
+
+    toggle.addEventListener('click', () => setOpen(toggle.getAttribute('aria-expanded') !== 'true'));
+    panel.querySelectorAll('[data-menu-link]').forEach((link) => link.addEventListener('click', () => setOpen(false)));
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') setOpen(false);
+    });
+    window.matchMedia('(min-width: 64rem)').addEventListener('change', (event) => {
+      if (event.matches) setOpen(false);
+    });
+  }
+</script>

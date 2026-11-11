@@ -1,0 +1,48 @@
+---
+import Logo from './Logo.astro';
+import { SITE, INSTAGRAM_URL } from '../site';
+
+const year = new Date().getFullYear();
+const links = [
+  { label: 'Impressum', href: '/impressum' },
+  { label: 'Datenschutz', href: '/datenschutz' },
+  { label: 'Instagram', href: INSTAGRAM_URL, external: true },
+];
+---
+
+<footer class="bg-ink-950">
+  <div class="container-page flex flex-col gap-10 pt-16 pb-12">
+    <div class="flex flex-col gap-10 sm:flex-row sm:items-start sm:justify-between">
+      <Logo />
+      <div class="flex flex-col gap-1.5">
+        <h2 class="text-xs font-semibold tracking-[0.14em] text-pulse">IMPRESSUM</h2>
+        <address class="text-base/[1.6] text-fg-muted not-italic sm:text-sm/[1.6]">
+          {SITE.name}<br />
+          {SITE.owner}<br />
+          {SITE.address.street}<br />
+          {SITE.address.city}<br />
+          {SITE.address.email} · {SITE.address.phone}
+        </address>
+      </div>
+    </div>
+
+    <div class="flex flex-col-reverse gap-4 border-t border-line pt-6 sm:flex-row sm:items-start sm:justify-between">
+      <p class="text-sm text-fg-subtle sm:text-[0.8125rem]">© {year} {SITE.name}</p>
+      <ul role="list" class="flex flex-wrap gap-x-7 gap-y-2">
+        {
+          links.map((link) => (
+            <li class="text-sm font-medium sm:text-[0.8125rem]">
+              <a
+                href={link.href}
+                {...(link.external ? { target: '_blank', rel: 'noopener' } : {})}
+                class="rounded-sm text-fg-muted hover:text-fg focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pulse"
+              >
+                {link.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </div>
+</footer>

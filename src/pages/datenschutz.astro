@@ -1,0 +1,46 @@
+---
+import LegalLayout from '../layouts/LegalLayout.astro';
+import { SITE } from '../site';
+
+// TODO: Entwurf – vor dem Go-live rechtlich prüfen lassen.
+---
+
+<LegalLayout title="Datenschutz">
+  <p>
+    Mit dieser Datenschutzerklärung informieren wir darüber, welche Personendaten wir im Zusammenhang mit dieser Website
+    bearbeiten. Massgebend ist das Schweizer Datenschutzgesetz (DSG).
+  </p>
+
+  <h2>Verantwortliche Stelle</h2>
+  <p>
+    {SITE.name}, {SITE.owner}<br />
+    {SITE.address.street}, {SITE.address.city}<br />
+    {SITE.address.email}
+  </p>
+
+  <h2>Hosting und Server-Logfiles</h2>
+  <p>
+    Diese Website wird bei der Hostpoint AG in der Schweiz betrieben. Beim Aufruf der Website werden technisch notwendige
+    Daten (z.&nbsp;B. IP-Adresse, Datum und Uhrzeit, aufgerufene Seite, Browser) in Server-Logfiles gespeichert. Diese
+    Daten dienen ausschliesslich dem sicheren Betrieb der Website.
+  </p>
+
+  <h2>Cookies, Tracking und Schriften</h2>
+  <p>
+    Diese Website verwendet keine Cookies und keine Tracking- oder Analyse-Tools. Die verwendeten Schriften werden lokal
+    vom eigenen Server geladen; es findet keine Verbindung zu Drittanbietern wie Google Fonts statt.
+  </p>
+
+  <h2>Kontaktaufnahme via WhatsApp</h2>
+  <p>
+    Für die Kontaktaufnahme verlinkt diese Website auf WhatsApp (WhatsApp Ireland Ltd. / Meta Platforms). Erst wenn du
+    einen Link anklickst und eine Nachricht sendest, werden Daten an WhatsApp übermittelt. Dabei gelten die
+    Datenschutzbestimmungen von WhatsApp. Alternativ kannst du uns auch per E-Mail oder Telefon kontaktieren.
+  </p>
+
+  <h2>Deine Rechte</h2>
+  <p>
+    Du hast das Recht auf Auskunft, Berichtigung und Löschung deiner Personendaten. Wende dich dafür an die oben genannte
+    Adresse.
+  </p>
+</LegalLayout>
