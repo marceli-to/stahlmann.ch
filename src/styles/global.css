@@ -49,6 +49,44 @@
   color: var(--color-pulse);
 }
 
+/*
+ * Signal pulse: a short green streak runs along the element's bottom border, then rests.
+ * Tune per element with --pulse-delay (stagger) and --pulse-duration (cycle incl. rest).
+ * The element must be positioned (relative/sticky/…).
+ */
+@utility pulse-line {
+  &::after {
+    content: "";
+    position: absolute;
+    inset-inline: 0;
+    bottom: -1px;
+    height: 1px;
+    pointer-events: none;
+    background: linear-gradient(90deg, transparent, var(--color-pulse) 70%, #b6f0be, transparent) no-repeat;
+    background-size: 8rem 100%;
+    background-position: -8rem 0;
+    filter: drop-shadow(0 0 3px var(--color-pulse));
+    animation: pulse-run var(--pulse-duration, 7s) linear var(--pulse-delay, 0s) infinite;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    &::after {
+      display: none;
+    }
+  }
+}
+
+@keyframes pulse-run {
+  0% {
+    background-position: -8rem 0;
+  }
+  /* travel time ≈ 35% of the cycle, the rest is a pause */
+  35%,
+  100% {
+    background-position: calc(100% + 8rem) 0;
+  }
+}
+
 /* Long German compounds must never push the layout wider than the screen */
 :where(h1, h2, h3, blockquote) {
   overflow-wrap: break-word;

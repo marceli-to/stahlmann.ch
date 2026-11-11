@@ -38,6 +38,7 @@ Decisions so far:
 | Story section | No overlaid badge – the patch is already on the vest in the photo |
 | Mobile layout | Designed by us (Figma has desktop only) |
 | Legal pages | Separate `/impressum` and `/datenschutz` |
+| Signal pulse | Green streak runs along the header line and each section bar (`pulse-line` utility in `global.css`, staggered, off with reduced motion) |
 
 ## Structure
 
