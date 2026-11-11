@@ -11,7 +11,9 @@ Backups from the design comparison (November 2026). Not used on the site; kept s
 
 All files read their content from `src/content.ts`.
 
-To restore one, import it in `src/pages/index.astro`. Two directions need CSS that was removed from `src/styles/global.css`:
+To restore one, import it in `src/pages/index.astro`. Some directions need CSS that was removed from `src/styles/global.css`:
+
+- **All four** were designed with Archivo as the body font (the live site uses Geist) – run `npm i @fontsource-variable/archivo`, add `@import "@fontsource-variable/archivo/wdth.css";` and set `--font-sans: "Archivo Variable", ui-sans-serif, system-ui, sans-serif;`. Editorial and Poster also rely on its width axis (`font-stretch-62%` / `font-stretch-125%`).
 
 - **Premium** uses `font-serif` – run `npm i @fontsource/instrument-serif`, add `@import "@fontsource/instrument-serif/latin-400-italic.css";` and `--font-serif: "Instrument Serif", ui-serif, Georgia, serif;` in `@theme`.
 - **Poster** uses `animate-marquee` – add to `@theme`:

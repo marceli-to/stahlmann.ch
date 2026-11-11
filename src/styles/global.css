@@ -1,11 +1,11 @@
 @import "tailwindcss";
-@import "@fontsource-variable/archivo/wdth.css";
 @import "@fontsource/archivo-black/latin-400.css";
 @import "@fontsource-variable/jetbrains-mono/wght.css";
+@import "@fontsource-variable/geist/wght.css";
 
 @theme {
-  --font-sans: "Archivo Variable", ui-sans-serif, system-ui, sans-serif;
-  --font-display: "Archivo Black", "Archivo Variable", ui-sans-serif, sans-serif;
+  --font-sans: "Geist Variable", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Archivo Black", ui-sans-serif, sans-serif;
   --font-mono: "JetBrains Mono Variable", ui-monospace, monospace;
 
   /* Surfaces (Figma: Stahlmann – Onepager) */
