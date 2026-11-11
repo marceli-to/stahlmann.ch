@@ -1,0 +1,13 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Button from '../components/Button.astro';
+---
+
+<Layout title="Seite nicht gefunden" noindex>
+  <section class="container-page flex flex-col items-start gap-7 py-24 sm:py-32">
+    <p class="eyebrow">Fehler 404</p>
+    <h1 class="font-display text-[2.5rem]/[1.05] tracking-[-0.02em] sm:text-6xl/[1.05]">Diese Seite gibt es nicht.</h1>
+    <p class="max-w-[36rem] text-lg/[1.55] text-fg-muted">Kein Grund aufzugeben – zurück zur Startseite und weiter geht's.</p>
+    <Button href="/" size="lg">Zur Startseite</Button>
+  </section>
+</Layout>

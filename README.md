@@ -22,3 +22,7 @@ npm run build    # static site in dist/
 ## Deployment (Hostpoint)
 
 Run `npm run build` and upload the contents of `dist/` to the web root.
+
+## Herd
+
+`LocalValetDriver.php` lets Herd serve the built `dist/` at https://stahlmann.ch.test – run `npm run build` to refresh it. For live reload use `npm run dev`.
