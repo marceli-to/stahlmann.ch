@@ -1,7 +1,7 @@
 <svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-<g id="Frame">
-<path id="Vector" d="M24.5 14C24.5 19.799 19.799 24.5 14 24.5C8.20101 24.5 3.5 19.799 3.5 14C3.5 8.20101 8.20101 3.5 14 3.5C19.799 3.5 24.5 8.20101 24.5 14Z" stroke-width="2.33333" stroke-linecap="round" stroke-linejoin="round" stroke="#5BC46A"/>
-<path id="Vector_2" d="M19.8333 14C19.8333 17.2217 17.2217 19.8333 14 19.8333C10.7783 19.8333 8.16667 17.2217 8.16667 14C8.16667 10.7783 10.7783 8.16667 14 8.16667C17.2217 8.16667 19.8333 10.7783 19.8333 14Z" stroke-width="2.33333" stroke-linecap="round" stroke-linejoin="round" stroke="#5BC46A"/>
-<path id="Vector_3" d="M14 15.4C14.7732 15.4 15.4 14.7732 15.4 14C15.4 13.2268 14.7732 12.6 14 12.6C13.2268 12.6 12.6 13.2268 12.6 14C12.6 14.7732 13.2268 15.4 14 15.4Z" fill="#5BC46A" stroke-width="2.33333" stroke-linecap="round" stroke-linejoin="round" stroke="#5BC46A"/>
+<g>
+<path d="M24.5 14C24.5 19.799 19.799 24.5 14 24.5C8.20101 24.5 3.5 19.799 3.5 14C3.5 8.20101 8.20101 3.5 14 3.5C19.799 3.5 24.5 8.20101 24.5 14Z" stroke-width="2.33333" stroke-linecap="round" stroke-linejoin="round" stroke="#5BC46A"/>
+<path d="M19.8333 14C19.8333 17.2217 17.2217 19.8333 14 19.8333C10.7783 19.8333 8.16667 17.2217 8.16667 14C8.16667 10.7783 10.7783 8.16667 14 8.16667C17.2217 8.16667 19.8333 10.7783 19.8333 14Z" stroke-width="2.33333" stroke-linecap="round" stroke-linejoin="round" stroke="#5BC46A"/>
+<path d="M14 15.4C14.7732 15.4 15.4 14.7732 15.4 14C15.4 13.2268 14.7732 12.6 14 12.6C13.2268 12.6 12.6 13.2268 12.6 14C12.6 14.7732 13.2268 15.4 14 15.4Z" fill="#5BC46A" stroke-width="2.33333" stroke-linecap="round" stroke-linejoin="round" stroke="#5BC46A"/>
 </g>
 </svg>

@@ -19,7 +19,7 @@ import { hero, nav } from '../content';
             nav.map((item) => (
               <li class="flex border-l border-line font-mono text-xs tracking-[0.14em] uppercase">
                 <a href={item.href} class="flex items-center gap-2 px-4 text-fg hover:bg-white/3 hover:text-pulse focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-pulse xl:px-7">
-                  <span class="text-fg-subtle">{item.index}</span>{item.label}
+                  <span aria-hidden="true" class="text-fg-subtle">{item.index}</span>{item.label}
                 </a>
               </li>
             ))
@@ -31,7 +31,7 @@ import { hero, nav } from '../content';
           rel="noopener"
           class="flex items-center gap-2.5 bg-pulse px-5 font-mono xl:px-6 text-xs font-semibold tracking-[0.14em] text-pulse-ink uppercase hover:bg-[#6fd27d] focus-visible:outline-2 focus-visible:-outline-offset-4 focus-visible:outline-pulse-ink"
         >
-          <ChatDark aria-hidden="true" /> Erstgespräch
+          <ChatDark aria-hidden="true" /> Erstgespräch<span class="sr-only"> (öffnet in neuem Fenster)</span>
         </a>
       </nav>
 
@@ -53,7 +53,7 @@ import { hero, nav } from '../content';
     </div>
   </div>
 
-  <nav id="mobile-menu" aria-label="Hauptnavigation" class="hidden border-t border-line lg:hidden" data-menu-panel>
+  <nav id="mobile-menu" aria-label="Mobile Navigation" class="hidden border-t border-line lg:hidden" data-menu-panel>
     <div class="container-page">
       <div class="flex flex-col gap-8 border-x border-line px-5 pt-2 pb-8 sm:px-8">
         <ul role="list" class="flex flex-col">
@@ -61,7 +61,7 @@ import { hero, nav } from '../content';
             nav.map((item) => (
               <li class="border-b border-line">
                 <a href={item.href} class="flex items-baseline gap-4 py-5 text-fg hover:text-pulse" data-menu-link>
-                  <span class="font-mono text-xs tracking-[0.14em] text-pulse">{item.index}</span>
+                  <span aria-hidden="true" class="font-mono text-xs tracking-[0.14em] text-pulse">{item.index}</span>
                   <span class="font-display text-2xl uppercase">{item.label}</span>
                 </a>
               </li>

@@ -8,10 +8,10 @@ import Button from '../components/Button.astro';
   <section class="container-page">
     <SectionBar index="404" title="Ziel nicht gefunden" meta="Status: Verloren" />
     <div class="flex flex-col items-start gap-7 border-x border-line px-5 py-20 sm:px-8 lg:py-32">
-      <p class="font-mono text-xs tracking-[0.16em] text-pulse uppercase">// Fehler 404</p>
+      <p class="font-mono text-xs tracking-[0.16em] text-pulse uppercase"><span aria-hidden="true">// </span>Fehler 404</p>
       <h1 class="font-display text-[2.5rem]/[0.95] tracking-[-0.02em] uppercase sm:text-7xl/[0.92]">Diese Seite gibt es nicht.</h1>
       <p class="max-w-[36rem] text-lg/[1.55] text-fg-muted">Kein Grund aufzugeben – zurück zur Startseite und weiter geht's.</p>
-      <Button href="/">← Zur Startseite</Button>
+      <Button href="/" arrow="left">Zur Startseite</Button>
     </div>
   </section>
 </Layout>

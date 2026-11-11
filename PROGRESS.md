@@ -20,6 +20,8 @@ Optional, Laravel Herd: if the folder sits in a parked Herd directory, `LocalVal
 - Fonts self-hosted via Fontsource (no Google requests): **Archivo Black** (headlines), **Geist** (body), **JetBrains Mono** (labels, buttons, prices)
 - Images through `astro:assets` (WebP, responsive `srcset`)
 - Small inline script only for the mobile menu (`Header.astro`)
+- SEO: meta + Open Graph/Twitter tags and JSON-LD (`LocalBusiness` with offers, homepage only) in `Layout.astro`; `@astrojs/sitemap`; `public/robots.txt`; `llms.txt` generated from `content.ts` (`src/pages/llms.txt.ts`)
+- Accessibility: skip link, labelled sections, decorative glyphs/numbers hidden from screen readers, new-window hints on external links, pointer cursor on buttons
 
 ## Design
 
@@ -38,6 +40,7 @@ Decisions so far:
 | Story section | No overlaid badge – the patch is already on the vest in the photo |
 | Mobile layout | Designed by us (Figma has desktop only) |
 | Legal pages | Separate `/impressum` and `/datenschutz` |
+| Photo hover | Short shake on the hero and portrait photos; corner brackets stay still (`animate-shake`, off with reduced motion) |
 | Signal pulse | Green streak runs along the header line and each section bar (`pulse-line` utility in `global.css`, staggered, off with reduced motion) |
 
 ## Structure
@@ -53,7 +56,7 @@ src/
     Header, Footer, Logo, Button, SectionBar, Brackets
     sections/             Hero, Credentials, Story, Angebot, Preise, Kontakt
     archive/              Unused design directions (see archive/README.md)
-public/                   favicon.svg, .htaccess (404 page, asset caching)
+public/                   favicon.svg, apple-touch-icon.png, og-image.jpg, robots.txt, .htaccess
 LocalValetDriver.php      Herd: serves dist/ locally (not deployed)
 ```
 
@@ -63,7 +66,8 @@ LocalValetDriver.php      Herd: serves dist/ locally (not deployed)
 - [ ] `src/site.ts`: Instagram URL
 - [ ] `src/site.ts`: Impressum address, e-mail, phone (currently `[Strasse Nr.]` etc.)
 - [ ] Datenschutz text is a first draft (Swiss DSG) – have it reviewed
-- [ ] Optional: Open Graph image for link previews (none yet)
+- [ ] Once the address is final: add it to the JSON-LD in `Layout.astro` (left out on purpose while placeholders)
+- [ ] Share image `public/og-image.jpg` (1200×630) was rendered from an HTML mock of the hero – re-render if headline or photo change
 - [ ] Deploy: `npm run build`, upload the contents of `dist/` (incl. `.htaccess`) to the Hostpoint web root
 
 ## Ideas / not done

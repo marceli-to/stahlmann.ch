@@ -5,10 +5,10 @@ import Check from '../../assets/icons/check.svg';
 import { packages, pricingNote } from '../../content';
 ---
 
-<section id="preise" class="border-b border-line">
+<section id="preise" aria-labelledby="preise-title" class="border-b border-line">
   <div class="container-page">
     <SectionBar index="03" title="Preise & Pakete" meta="CHF inkl. MWST" />
-    <p class="border-x border-line px-5 pt-12 pb-10 font-display text-[2.25rem]/[1] tracking-[-0.015em] uppercase sm:px-8 sm:text-5xl/[1]">Wähle deine Mission</p>
+    <h2 id="preise-title" class="border-x border-line px-5 pt-12 pb-10 font-display text-[2.25rem]/[1] tracking-[-0.015em] uppercase sm:px-8 sm:text-5xl/[1]">Wähle deine Mission</h2>
     <ul role="list" class="grid gap-px border border-line bg-line lg:grid-cols-3">
       {
         packages.map((pkg) => (
@@ -35,11 +35,11 @@ import { packages, pricingNote } from '../../content';
                 ))}
               </ul>
             </div>
-            <Button href={pkg.href} variant={pkg.featured ? 'primary' : 'outline'} external>Via WhatsApp anfragen →</Button>
+            <Button href={pkg.href} variant={pkg.featured ? 'primary' : 'outline'} arrow="right" external>Via WhatsApp anfragen</Button>
           </li>
         ))
       }
     </ul>
-    <p class="border-x border-line px-5 py-6 font-mono text-xs/5 tracking-[0.06em] text-fg-subtle sm:px-8">* {pricingNote}</p>
+    <p class="border-x border-line px-5 py-6 font-mono text-xs/5 tracking-[0.06em] text-fg-subtle sm:px-8"><span aria-hidden="true">* </span>{pricingNote}</p>
   </div>
 </section>

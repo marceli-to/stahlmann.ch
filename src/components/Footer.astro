@@ -6,8 +6,8 @@ import { hero, nav } from '../content';
 
 const year = new Date().getFullYear();
 const legal = [
-  { label: 'Impressum', href: '/impressum' },
-  { label: 'Datenschutz', href: '/datenschutz' },
+  { label: 'Impressum', href: '/impressum/' },
+  { label: 'Datenschutz', href: '/datenschutz/' },
   { label: 'Instagram', href: INSTAGRAM_URL, external: true },
 ];
 const label = 'font-mono text-xs tracking-[0.16em] text-pulse uppercase';
@@ -26,14 +26,14 @@ const label = 'font-mono text-xs tracking-[0.16em] text-pulse uppercase';
       </div>
 
       <!-- Navigation -->
-      <nav aria-label="Footer" class="flex flex-col gap-5 border-line px-5 py-10 max-lg:border-b sm:px-8 lg:col-span-3 lg:border-r lg:py-12">
-        <h2 class={label}>// Navigation</h2>
+      <nav aria-label="Footer-Navigation" class="flex flex-col gap-5 border-line px-5 py-10 max-lg:border-b sm:px-8 lg:col-span-3 lg:border-r lg:py-12">
+        <h2 class={label}><span aria-hidden="true">// </span>Navigation</h2>
         <ul role="list" class="flex flex-col gap-3">
           {
             nav.map((item) => (
               <li class="font-mono text-sm tracking-[0.1em] uppercase">
                 <a href={item.href} class="flex gap-3 text-fg hover:text-pulse focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pulse">
-                  <span class="text-fg-subtle">{item.index}</span>{item.label}
+                  <span aria-hidden="true" class="text-fg-subtle">{item.index}</span>{item.label}
                 </a>
               </li>
             ))
@@ -43,7 +43,7 @@ const label = 'font-mono text-xs tracking-[0.16em] text-pulse uppercase';
 
       <!-- Impressum -->
       <div class="flex flex-col gap-5 px-5 py-10 sm:px-8 lg:col-span-4 lg:py-12">
-        <h2 class={label}>// Impressum</h2>
+        <h2 class={label}><span aria-hidden="true">// </span>Impressum</h2>
         <address class="text-base/[1.6] text-fg-muted not-italic sm:text-sm/[1.6]">
           <strong class="font-semibold text-fg">{SITE.name}</strong><br />
           {SITE.owner}<br />
@@ -67,12 +67,13 @@ const label = 'font-mono text-xs tracking-[0.16em] text-pulse uppercase';
                 class="text-fg-muted hover:text-pulse focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pulse"
               >
                 {link.label}
+                {link.external && <span class="sr-only"> (öffnet in neuem Fenster)</span>}
               </a>
             </li>
           ))
         }
       </ul>
-      <p class="flex items-center gap-2 text-fg-subtle"><span class="size-2 rounded-full bg-pulse"></span> Einsatzbereit · 47.37°N 8.54°E</p>
+      <p class="flex items-center gap-2 text-fg-subtle"><span aria-hidden="true" class="size-2 rounded-full bg-pulse"></span> Einsatzbereit · 47.37°N 8.54°E</p>
     </div>
   </div>
 </footer>

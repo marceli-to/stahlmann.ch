@@ -13,6 +13,6 @@ const delay = Number.isFinite(Number(index)) ? Number(index) * 1.7 : 0.8;
 ---
 
 <div class="pulse-line relative flex items-center justify-between gap-4 border-x border-b border-line px-5 py-4 font-mono text-xs tracking-[0.16em] uppercase sm:px-8" style={`--pulse-delay: ${delay}s`}>
-  <h2 class="text-pulse">{index} — {title}</h2>
+  <p class="text-pulse"><span aria-hidden="true">{index} — </span>{title}</p>
   {meta && <p class="text-fg-subtle max-sm:hidden">{meta}</p>}
 </div>

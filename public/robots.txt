@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://stahlmann.ch/sitemap-index.xml

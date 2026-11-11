@@ -6,26 +6,26 @@ import heroImage from '../../assets/images/hero-training.jpg';
 import { hero } from '../../content';
 ---
 
-<section class="border-b border-line">
+<section aria-labelledby="hero-title" class="border-b border-line">
   <div class="container-page">
     <div class="flex flex-wrap items-center gap-x-6 gap-y-2 border-x border-line px-5 py-3 font-mono text-xs tracking-[0.12em] text-fg-subtle uppercase sm:px-8">
-      <p class="flex items-center gap-2 text-pulse"><span class="size-2 rounded-full bg-pulse"></span> Einsatzbereit</p>
+      <p class="flex items-center gap-2 text-pulse"><span aria-hidden="true" class="size-2 rounded-full bg-pulse"></span> Einsatzbereit</p>
       <p>Zürich · Aargau · Zug</p>
       <p class="max-sm:hidden">Dossier 01 / Konditionstrainer</p>
     </div>
     <div class="grid border-x border-t border-line lg:grid-cols-12">
       <div class="flex flex-col items-start gap-8 px-5 py-12 sm:px-8 lg:col-span-7 lg:py-20 lg:pr-14">
-        <p class="font-mono text-xs tracking-[0.16em] text-pulse uppercase">// {hero.eyebrow}</p>
-        <h1 class="font-display text-[2.125rem]/[0.98] tracking-[-0.02em] uppercase sm:text-6xl/[0.95] xl:text-[4.5rem]/[0.95]">{hero.title}</h1>
+        <p class="font-mono text-xs tracking-[0.16em] text-pulse uppercase"><span aria-hidden="true">// </span>{hero.eyebrow}</p>
+        <h1 id="hero-title" class="font-display text-[2.125rem]/[0.98] tracking-[-0.02em] uppercase sm:text-6xl/[0.95] xl:text-[4.5rem]/[0.95]">{hero.title}</h1>
         <p class="max-w-[34rem] text-lg/[1.6] text-fg-muted">{hero.lead}</p>
         <div class="flex w-full flex-col gap-3 sm:w-auto sm:flex-row">
           <Button href={hero.ctaHref} icon external>Kostenloses Erstgespräch</Button>
-          <Button href="#angebot" variant="outline">Angebot ansehen →</Button>
+          <Button href="#angebot" variant="outline" arrow="right">Angebot ansehen</Button>
         </div>
       </div>
       <div class="border-line p-8 max-lg:border-t sm:p-12 lg:col-span-5 lg:border-l">
         <figure class="flex flex-col gap-4">
-          <div class="relative">
+          <div class="group relative">
             <Brackets />
             <Image
               src={heroImage}
@@ -34,10 +34,10 @@ import { hero } from '../../content';
               sizes="(min-width: 1024px) 420px, 90vw"
               loading="eager"
               fetchpriority="high"
-              class="aspect-4/5 w-full object-cover object-right grayscale-[35%]"
+              class="aspect-4/5 w-full object-cover object-right grayscale-[35%] motion-safe:group-hover:animate-shake"
             />
           </div>
-          <figcaption class="flex justify-between gap-4 font-mono text-[0.6875rem] tracking-[0.12em] text-fg-subtle uppercase">
+          <figcaption aria-hidden="true" class="flex justify-between gap-4 font-mono text-[0.6875rem] tracking-[0.12em] text-fg-subtle uppercase">
             <span>IMG_01 — Battle Ropes</span><span>47.37°N 8.54°E</span>
           </figcaption>
         </figure>

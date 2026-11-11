@@ -4,16 +4,16 @@ import Button from '../Button.astro';
 import { contact } from '../../content';
 ---
 
-<section id="kontakt">
+<section id="kontakt" aria-labelledby="kontakt-title">
   <div class="container-page">
     <SectionBar index="04" title="Kontakt" meta="Kanal: WhatsApp" />
     <div class="grid items-end gap-10 border-x border-line px-5 py-16 sm:px-8 lg:grid-cols-12 lg:py-24">
       <div class="flex flex-col gap-6 lg:col-span-8">
-        <p class="font-display text-[2.75rem]/[0.95] tracking-[-0.02em] uppercase sm:text-7xl/[0.92]">{contact.title}</p>
+        <h2 id="kontakt-title" class="font-display text-[2.75rem]/[0.95] tracking-[-0.02em] uppercase sm:text-7xl/[0.92]">{contact.title}</h2>
         <p class="max-w-[36rem] text-lg/[1.55] text-fg-muted">{contact.text}</p>
       </div>
       <div class="lg:col-span-4 lg:justify-self-end">
-        <Button href={contact.href} icon external class="w-full">Jetzt starten →</Button>
+        <Button href={contact.href} icon external arrow="right" class="w-full">Jetzt starten</Button>
       </div>
     </div>
   </div>

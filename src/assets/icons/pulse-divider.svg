@@ -1,6 +1,6 @@
 <svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="1440" height="90" viewBox="0 0 1440 90" fill="none" xmlns="http://www.w3.org/2000/svg">
-<g id="Puls-Divider" clip-path="url(#clip0_0_4)">
-<path id="Vector" d="M0 55H560L578 40L596 55H624L644 8L668 84L688 55H1440" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke="#5BC46A"/>
+<g clip-path="url(#clip0_0_4)">
+<path d="M0 55H560L578 40L596 55H624L644 8L668 84L688 55H1440" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke="#5BC46A"/>
 </g>
 <defs>
 <clipPath id="clip0_0_4">
