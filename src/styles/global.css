@@ -1,10 +1,12 @@
 @import "tailwindcss";
-@import "@fontsource-variable/archivo/wght.css";
+@import "@fontsource-variable/archivo/wdth.css";
 @import "@fontsource/archivo-black/latin-400.css";
+@import "@fontsource-variable/jetbrains-mono/wght.css";
 
 @theme {
   --font-sans: "Archivo Variable", ui-sans-serif, system-ui, sans-serif;
   --font-display: "Archivo Black", "Archivo Variable", ui-sans-serif, sans-serif;
+  --font-mono: "JetBrains Mono Variable", ui-monospace, monospace;
 
   /* Surfaces (Figma: Stahlmann – Onepager) */
   --color-ink-950: #0c0e10; /* footer */
@@ -45,6 +47,15 @@
   letter-spacing: 0.16em;
   text-transform: uppercase;
   color: var(--color-pulse);
+}
+
+/* Long German compounds must never push the layout wider than the screen */
+:where(h1, h2, h3, blockquote) {
+  overflow-wrap: break-word;
+
+  @media (width < 40rem) {
+    hyphens: auto;
+  }
 }
 
 html {

@@ -5,7 +5,7 @@ import ChatLight from '../assets/icons/chat-light.svg';
 interface Props {
   href: string;
   variant?: 'primary' | 'outline';
-  size?: 'sm' | 'md' | 'lg' | 'xl';
+  size?: 'sm' | 'md';
   icon?: boolean;
   external?: boolean;
   class?: string;
@@ -13,17 +13,14 @@ interface Props {
 
 const { href, variant = 'primary', size = 'md', icon = false, external = false, class: className } = Astro.props;
 
-// Sizes taken from the Figma buttons: header (sm), package (md), hero (lg), CTA (xl)
 const sizes = {
-  sm: 'px-5.5 py-3.5 text-[0.9375rem]',
-  md: 'px-5.5 py-3.5 text-base',
-  lg: 'px-8 py-5 text-[1.0625rem]',
-  xl: 'px-7 py-5 text-[1.0625rem] sm:px-9 sm:py-5.5 sm:text-[1.1875rem]',
+  sm: 'gap-2.5 px-4 py-3 text-xs',
+  md: 'gap-3 px-6 py-4.5 text-sm',
 };
 
 const variants = {
   primary: 'bg-pulse text-pulse-ink hover:bg-[#6fd27d]',
-  outline: 'border-[1.5px] border-fg-subtle text-fg hover:border-fg hover:bg-white/5',
+  outline: 'border border-fg-subtle text-fg hover:border-fg hover:bg-white/5',
 };
 
 const Icon = variant === 'primary' ? ChatDark : ChatLight;
@@ -33,7 +30,7 @@ const Icon = variant === 'primary' ? ChatDark : ChatLight;
   href={href}
   {...external ? { target: '_blank', rel: 'noopener' } : {}}
   class:list={[
-    'inline-flex items-center justify-center gap-2.5 rounded-lg text-center leading-none font-bold tracking-[0.01em] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pulse',
+    'inline-flex items-center justify-center text-center font-mono font-semibold tracking-[0.08em] uppercase focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pulse',
     sizes[size],
     variants[variant],
     className,

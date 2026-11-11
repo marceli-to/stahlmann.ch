@@ -1,81 +1,44 @@
 ---
 import { Image } from 'astro:assets';
+import Brackets from '../Brackets.astro';
+import SectionBar from '../SectionBar.astro';
 import portrait from '../../assets/images/portrait.jpg';
 import badge from '../../assets/images/badge-patch.png';
-import Clock from '../../assets/icons/clock.svg';
-
-const experience = [
-  {
-    label: 'Beruf',
-    text: '15 Jahre Sicherheitsbehörde, zwei Auslandseinsätze in einer Spezialinfanterie, heute Feuerwehr / Intervention.',
-  },
-  {
-    label: 'Frauensport',
-    text: '5 Jahre Konditionscoach für Damenteams im Unihockey – mit Fokus auf Verletzungsprävention und Leistungssteigerung.',
-  },
-  {
-    label: 'Sport',
-    text: 'American Football für Explosivität und Physis, Marathon und Ironman für Ausdauer und mentale Härte. Nebenbei Thaiboxen.',
-  },
-];
+import { story } from '../../content';
 ---
 
-<section id="story" class="overflow-x-clip bg-ink-850 py-20 sm:py-24 lg:py-30">
-  <div class="container-page grid items-start gap-16 lg:grid-cols-[23fr_31fr] lg:gap-24">
-    <!-- Portrait with the badge stitched on like a patch -->
-    <!-- Badge overhangs the portrait bottom-right (Figma: x 57.7%, y 76.6%); it overlaps the grid gap below. -->
-    <div class="relative mx-auto w-full max-w-[27.5rem] lg:mx-0">
-      <div class="overflow-hidden rounded-[1.25rem] bg-ink-800 outline-1 -outline-offset-1 outline-white/10">
-        <Image
-          src={portrait}
-          alt="Thomas Stadelmann mit Gewichtsweste und Stahlmann-Patch beim Lauftraining"
-          widths={[440, 660, 880]}
-          sizes="(min-width: 480px) 440px, 100vw"
-          class="aspect-22/29 size-full object-cover object-[22%_50%]"
-        />
+<section id="story" class="overflow-x-clip border-b border-line">
+  <div class="container-page">
+    <SectionBar index="01" title="Über mich" meta="Personalakte" />
+    <div class="grid border-x border-line lg:grid-cols-12">
+      <div class="relative p-8 sm:p-12 lg:col-span-5 lg:border-r lg:border-line">
+        <div class="relative mx-auto max-w-[24rem]">
+          <Brackets />
+          <Image
+            src={portrait}
+            alt="Thomas Stadelmann mit Gewichtsweste und Stahlmann-Patch"
+            widths={[400, 600, 800]}
+            sizes="(min-width: 1024px) 384px, 90vw"
+            class="aspect-4/5 w-full object-cover object-[22%_50%]"
+          />
+          <Image src={badge} alt="" widths={[200, 400]} sizes="160px" class="absolute -right-6 -bottom-8 z-20 size-40 rotate-8" />
+        </div>
       </div>
-      <div class="absolute top-[76.6%] left-[57.7%] size-36 rotate-8 max-sm:left-auto max-sm:-right-2 sm:size-52.5">
-        <Image
-          src={badge}
-          alt=""
-          widths={[290, 580]}
-          sizes="(min-width: 640px) 290px, 200px"
-          class="absolute top-[-11.43%] left-[-19.05%] h-[138.1%] w-[138.1%] max-w-none"
-        />
-      </div>
-    </div>
-
-    <div class="flex flex-col gap-7">
-      <div class="flex flex-col gap-4">
-        <p class="eyebrow">Über mich</p>
-        <h2 class="font-display text-[2.25rem]/[1.08] tracking-[-0.015em] text-balance sm:text-5xl/[1.08]">
-          Thomas «Stahlmann» Stadelmann
-        </h2>
-      </div>
-
-      <p class="text-lg/[1.6] text-fg-muted">
-        Polizei, Spezialinfanterie, Feuerwehr: In meinem Beruf habe ich gelernt, unter Druck klar und handlungsfähig zu
-        bleiben. Als Athlet – über 30 Jahre American Football, dazu Ironman und Marathons – weiss ich, was es heisst,
-        Körper und Kopf an die Grenze zu bringen. Ich kenne die physischen und mentalen Hürden aus eigener Erfahrung, bis
-        hin zu einem Motorrad-Weltrekord in der Todeskugel. Und ich zeige dir, wie du sie überwindest.
-      </p>
-
-      <dl class="flex flex-col">
-        {
-          experience.map((item) => (
-            <div class="flex flex-col gap-1.5 border-t border-line py-4.5 sm:flex-row sm:gap-6">
-              <dt class="text-base font-bold tracking-[0.02em] text-pulse sm:w-32.5 sm:shrink-0">{item.label}</dt>
-              <dd class="text-base/[1.55]">{item.text}</dd>
-            </div>
-          ))
-        }
-      </dl>
-
-      <div class="flex items-center gap-4 rounded-xl bg-ink-750 px-6 py-5">
-        <Clock class="shrink-0" aria-hidden="true" />
-        <p class="text-base/[1.55] text-fg-muted sm:text-[0.9375rem]/[1.55]">
-          Dank meinem Schichtrhythmus trainiere ich antizyklisch und flexibel – dann, wenn es in deinen Zeitplan passt.
-          Kein Standardprogramm, sondern strukturiertes Training für Körper und Kopf.
+      <div class="flex flex-col gap-8 px-5 py-12 sm:px-8 lg:col-span-7 lg:px-14 lg:py-16">
+        <p class="font-display text-[2.25rem]/[1] tracking-[-0.015em] uppercase sm:text-5xl/[1]">{story.name}</p>
+        <p class="text-lg/[1.6] text-fg-muted">{story.text}</p>
+        <dl class="border-t border-line">
+          {
+            story.experience.map((item) => (
+              <div class="grid gap-2 border-b border-line py-4 sm:grid-cols-[9rem_1fr] sm:gap-6">
+                <dt class="font-mono text-xs/6 tracking-[0.14em] text-pulse uppercase">{item.label}</dt>
+                <dd class="text-base/[1.55]">{item.text}</dd>
+              </div>
+            ))
+          }
+        </dl>
+        <p class="border-l-2 border-pulse pl-5 text-base/[1.55] text-fg-muted sm:text-[0.9375rem]/[1.55]">
+          <span class="font-mono text-xs tracking-[0.14em] text-pulse uppercase">Hinweis: </span>{story.flex}
         </p>
       </div>
     </div>

@@ -1,68 +1,75 @@
 ---
 import Logo from './Logo.astro';
 import Button from './Button.astro';
-import { whatsappLink } from '../site';
+import ChatDark from '../assets/icons/chat-dark.svg';
+import { hero, nav } from '../content';
 
-const nav = [
-  { label: 'Story', href: '/#story' },
-  { label: 'Angebot', href: '/#angebot' },
-  { label: 'Preise', href: '/#preise' },
-  { label: 'Kontakt', href: '/#kontakt' },
-];
-
-const ctaHref = whatsappLink('Hallo Thomas, ich interessiere mich für ein kostenloses Erstgespräch.');
 ---
 
 <header class="sticky top-0 z-50 border-b border-line bg-ink-900/95 backdrop-blur-md">
-  <div class="container-page flex items-center justify-between gap-6 py-4 lg:py-5.5">
-    <Logo />
+  <div class="container-page">
+    <div class="flex h-18 items-stretch border-x border-line">
+      <div class="flex items-center px-5 sm:px-8">
+        <Logo />
+      </div>
 
-    <nav aria-label="Hauptnavigation" class="flex items-center gap-10 max-lg:hidden">
-      <ul role="list" class="flex items-center gap-10">
-        {
-          nav.map((item) => (
-            <li class="text-base font-medium tracking-[0.01em]">
-              <a href={item.href} class="rounded-sm text-fg hover:text-pulse focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-pulse">
-                {item.label}
-              </a>
-            </li>
-          ))
-        }
-      </ul>
-      <Button href={ctaHref} size="sm" external>Erstgespräch</Button>
-    </nav>
+      <nav aria-label="Hauptnavigation" class="ml-auto flex items-stretch max-lg:hidden">
+        <ul role="list" class="flex items-stretch">
+          {
+            nav.map((item) => (
+              <li class="flex border-l border-line font-mono text-xs tracking-[0.14em] uppercase">
+                <a href={item.href} class="flex items-center gap-2 px-4 text-fg hover:bg-white/3 hover:text-pulse focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-pulse xl:px-7">
+                  <span class="text-fg-subtle">{item.index}</span>{item.label}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+        <a
+          href={hero.ctaHref}
+          target="_blank"
+          rel="noopener"
+          class="flex items-center gap-2.5 bg-pulse px-5 font-mono xl:px-6 text-xs font-semibold tracking-[0.14em] text-pulse-ink uppercase hover:bg-[#6fd27d] focus-visible:outline-2 focus-visible:-outline-offset-4 focus-visible:outline-pulse-ink"
+        >
+          <ChatDark aria-hidden="true" /> Erstgespräch
+        </a>
+      </nav>
 
-    <button
-      type="button"
-      class="-m-2 inline-flex size-11 items-center justify-center rounded-lg text-fg hover:bg-white/5 focus-visible:outline-2 focus-visible:outline-pulse lg:hidden"
-      aria-controls="mobile-menu"
-      aria-expanded="false"
-      data-menu-toggle
-    >
-      <span class="sr-only">Menü öffnen</span>
-      <svg data-icon-open class="size-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
-        <path d="M4 7h16M4 12h16M4 17h16"></path>
-      </svg>
-      <svg data-icon-close class="hidden size-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
-        <path d="M6 6l12 12M18 6L6 18"></path>
-      </svg>
-    </button>
+      <button
+        type="button"
+        class="ml-auto flex w-18 shrink-0 items-center justify-center border-l border-line text-fg hover:bg-white/5 focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-pulse lg:hidden"
+        aria-controls="mobile-menu"
+        aria-expanded="false"
+        data-menu-toggle
+      >
+        <span class="sr-only">Menü öffnen</span>
+        <svg data-icon-open class="size-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true">
+          <path d="M4 7h16M4 12h16M4 17h10"></path>
+        </svg>
+        <svg data-icon-close class="hidden size-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true">
+          <path d="M6 6l12 12M18 6L6 18"></path>
+        </svg>
+      </button>
+    </div>
   </div>
 
   <nav id="mobile-menu" aria-label="Hauptnavigation" class="hidden border-t border-line lg:hidden" data-menu-panel>
-    <div class="container-page flex flex-col gap-6 pt-4 pb-8">
-      <ul role="list" class="flex flex-col">
-        {
-          nav.map((item) => (
-            <li class="border-b border-line text-xl font-semibold">
-              <a href={item.href} class="flex py-4 text-fg hover:text-pulse" data-menu-link>
-                {item.label}
-              </a>
-            </li>
-          ))
-        }
-      </ul>
-      <Button href={ctaHref} size="lg" icon external class="w-full">Kostenloses Erstgespräch</Button>
+    <div class="container-page">
+      <div class="flex flex-col gap-8 border-x border-line px-5 pt-2 pb-8 sm:px-8">
+        <ul role="list" class="flex flex-col">
+          {
+            nav.map((item) => (
+              <li class="border-b border-line">
+                <a href={item.href} class="flex items-baseline gap-4 py-5 text-fg hover:text-pulse" data-menu-link>
+                  <span class="font-mono text-xs tracking-[0.14em] text-pulse">{item.index}</span>
+                  <span class="font-display text-2xl uppercase">{item.label}</span>
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+        <Button href={hero.ctaHref} icon external class="w-full">Kostenloses Erstgespräch</Button>
+      </div>
     </div>
   </nav>
 </header>

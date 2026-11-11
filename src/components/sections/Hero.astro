@@ -1,39 +1,47 @@
 ---
 import { Image } from 'astro:assets';
+import Brackets from '../Brackets.astro';
 import Button from '../Button.astro';
 import heroImage from '../../assets/images/hero-training.jpg';
-import { whatsappLink } from '../../site';
+import { hero } from '../../content';
 ---
 
-<section class="pt-12 pb-16 sm:pt-16 lg:pt-24 lg:pb-18">
-  <div class="container-page grid items-center gap-12 lg:grid-cols-[31fr_25fr] lg:gap-20">
-    <div class="flex flex-col items-start gap-7">
-      <p class="eyebrow">Überlass deinen Erfolg nicht dem Zufall.</p>
-      <h1 class="font-display text-[2.625rem]/[1.04] tracking-[-0.02em] text-balance sm:text-6xl/[1.02] xl:text-[4.25rem]/[1.02]">
-        Kondition, Sporttest-Vorbereitung &amp; mentale Stärke.
-      </h1>
-      <p class="max-w-[36.25rem] text-lg/[1.55] text-fg-muted sm:text-[1.1875rem]/[1.55]">
-        Taktisches Athletiktraining und Personal Coaching für Bewerberinnen und Bewerber von Polizei, Armee und
-        Rettungsdiensten – und für alle Sportlerinnen und Sportler, die mehr wollen. In Zürich, Aargau und Zug.
-      </p>
-      <div class="flex w-full flex-col gap-4 pt-2 sm:w-auto sm:flex-row">
-        <Button href={whatsappLink('Hallo Thomas, ich interessiere mich für ein kostenloses Erstgespräch.')} size="lg" icon external>
-          Kostenloses Erstgespräch
-        </Button>
-        <Button href="#angebot" variant="outline" size="lg">Angebot ansehen</Button>
-      </div>
+<section class="border-b border-line">
+  <div class="container-page">
+    <div class="flex flex-wrap items-center gap-x-6 gap-y-2 border-x border-line px-5 py-3 font-mono text-xs tracking-[0.12em] text-fg-subtle uppercase sm:px-8">
+      <p class="flex items-center gap-2 text-pulse"><span class="size-2 rounded-full bg-pulse"></span> Einsatzbereit</p>
+      <p>Zürich · Aargau · Zug</p>
+      <p class="max-sm:hidden">Dossier 01 / Konditionstrainer</p>
     </div>
-
-    <div class="mx-auto w-full max-w-[31.25rem] overflow-hidden rounded-[1.25rem] bg-ink-850 outline-1 -outline-offset-1 outline-white/10">
-      <Image
-        src={heroImage}
-        alt="Thomas Stadelmann beim Training mit Battle Ropes in einer Industriehalle"
-        widths={[400, 600, 800, 1106]}
-        sizes="(min-width: 1024px) 500px, (min-width: 520px) 500px, 100vw"
-        loading="eager"
-        fetchpriority="high"
-        class="aspect-5/6 size-full object-cover object-right"
-      />
+    <div class="grid border-x border-t border-line lg:grid-cols-12">
+      <div class="flex flex-col items-start gap-8 px-5 py-12 sm:px-8 lg:col-span-7 lg:py-20 lg:pr-14">
+        <p class="font-mono text-xs tracking-[0.16em] text-pulse uppercase">// {hero.eyebrow}</p>
+        <h1 class="font-display text-[2.125rem]/[0.98] tracking-[-0.02em] uppercase sm:text-6xl/[0.95] xl:text-[4.5rem]/[0.95]">{hero.title}</h1>
+        <p class="max-w-[34rem] text-lg/[1.6] text-fg-muted">{hero.lead}</p>
+        <div class="flex w-full flex-col gap-3 sm:w-auto sm:flex-row">
+          <Button href={hero.ctaHref} icon external>Kostenloses Erstgespräch</Button>
+          <Button href="#angebot" variant="outline">Angebot ansehen →</Button>
+        </div>
+      </div>
+      <div class="border-line p-8 max-lg:border-t sm:p-12 lg:col-span-5 lg:border-l">
+        <figure class="flex flex-col gap-4">
+          <div class="relative">
+            <Brackets />
+            <Image
+              src={heroImage}
+              alt="Thomas Stadelmann beim Training mit Battle Ropes in einer Industriehalle"
+              widths={[400, 600, 800]}
+              sizes="(min-width: 1024px) 420px, 90vw"
+              loading="eager"
+              fetchpriority="high"
+              class="aspect-4/5 w-full object-cover object-right grayscale-[35%]"
+            />
+          </div>
+          <figcaption class="flex justify-between gap-4 font-mono text-[0.6875rem] tracking-[0.12em] text-fg-subtle uppercase">
+            <span>IMG_01 — Battle Ropes</span><span>47.37°N 8.54°E</span>
+          </figcaption>
+        </figure>
+      </div>
     </div>
   </div>
 </section>

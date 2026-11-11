@@ -1,0 +1,39 @@
+---
+import { Image } from 'astro:assets';
+import Button from './Button.astro';
+import heroImage from '../../../assets/images/hero-training.jpg';
+import { whatsappLink } from '../../../site';
+---
+
+<section class="pt-12 pb-16 sm:pt-16 lg:pt-24 lg:pb-18">
+  <div class="container-page grid items-center gap-12 lg:grid-cols-[31fr_25fr] lg:gap-20">
+    <div class="flex flex-col items-start gap-7">
+      <p class="eyebrow">Überlass deinen Erfolg nicht dem Zufall.</p>
+      <h1 class="font-display text-[2.625rem]/[1.04] tracking-[-0.02em] text-balance sm:text-6xl/[1.02] xl:text-[4.25rem]/[1.02]">
+        Kondition, Sporttest-Vorbereitung &amp; mentale Stärke.
+      </h1>
+      <p class="max-w-[36.25rem] text-lg/[1.55] text-fg-muted sm:text-[1.1875rem]/[1.55]">
+        Taktisches Athletiktraining und Personal Coaching für Bewerberinnen und Bewerber von Polizei, Armee und
+        Rettungsdiensten – und für alle Sportlerinnen und Sportler, die mehr wollen. In Zürich, Aargau und Zug.
+      </p>
+      <div class="flex w-full flex-col gap-4 pt-2 sm:w-auto sm:flex-row">
+        <Button href={whatsappLink('Hallo Thomas, ich interessiere mich für ein kostenloses Erstgespräch.')} size="lg" icon external>
+          Kostenloses Erstgespräch
+        </Button>
+        <Button href="#angebot" variant="outline" size="lg">Angebot ansehen</Button>
+      </div>
+    </div>
+
+    <div class="mx-auto w-full max-w-[31.25rem] overflow-hidden rounded-[1.25rem] bg-ink-850 outline-1 -outline-offset-1 outline-white/10">
+      <Image
+        src={heroImage}
+        alt="Thomas Stadelmann beim Training mit Battle Ropes in einer Industriehalle"
+        widths={[400, 600, 800, 1106]}
+        sizes="(min-width: 1024px) 500px, (min-width: 520px) 500px, 100vw"
+        loading="eager"
+        fetchpriority="high"
+        class="aspect-5/6 size-full object-cover object-right"
+      />
+    </div>
+  </div>
+</section>

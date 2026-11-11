@@ -34,7 +34,7 @@ const canonical = new URL(Astro.url.pathname, Astro.site ?? SITE.url);
     <meta name="generator" content={Astro.generator} />
   </head>
   <body>
-    <div class="isolate flex min-h-dvh flex-col">
+    <div class="isolate flex min-h-dvh flex-col overflow-x-clip">
       <Header />
       <main class="grow">
         <slot />

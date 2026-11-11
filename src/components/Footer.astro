@@ -1,23 +1,51 @@
 ---
 import Logo from './Logo.astro';
+import Button from './Button.astro';
 import { SITE, INSTAGRAM_URL } from '../site';
+import { hero, nav } from '../content';
 
 const year = new Date().getFullYear();
-const links = [
+const legal = [
   { label: 'Impressum', href: '/impressum' },
   { label: 'Datenschutz', href: '/datenschutz' },
   { label: 'Instagram', href: INSTAGRAM_URL, external: true },
 ];
+const label = 'font-mono text-xs tracking-[0.16em] text-pulse uppercase';
 ---
 
-<footer class="bg-ink-950">
-  <div class="container-page flex flex-col gap-10 pt-16 pb-12">
-    <div class="flex flex-col gap-10 sm:flex-row sm:items-start sm:justify-between">
-      <Logo />
-      <div class="flex flex-col gap-1.5">
-        <h2 class="text-xs font-semibold tracking-[0.14em] text-pulse">IMPRESSUM</h2>
+<footer class="border-t border-line bg-ink-950">
+  <div class="container-page">
+    <div class="grid border-x border-line lg:grid-cols-12">
+      <!-- Brand -->
+      <div class="flex flex-col items-start gap-6 border-line px-5 py-10 max-lg:border-b sm:px-8 lg:col-span-5 lg:border-r lg:py-12">
+        <Logo />
+        <p class="max-w-[22rem] text-base/[1.55] text-fg-muted sm:text-sm/[1.55]">
+          Taktisches Athletiktraining, Sporttest-Vorbereitung und Personal Coaching in Zürich, Aargau und Zug.
+        </p>
+        <Button href={hero.ctaHref} size="sm" icon external>Erstgespräch anfragen</Button>
+      </div>
+
+      <!-- Navigation -->
+      <nav aria-label="Footer" class="flex flex-col gap-5 border-line px-5 py-10 max-lg:border-b sm:px-8 lg:col-span-3 lg:border-r lg:py-12">
+        <h2 class={label}>// Navigation</h2>
+        <ul role="list" class="flex flex-col gap-3">
+          {
+            nav.map((item) => (
+              <li class="font-mono text-sm tracking-[0.1em] uppercase">
+                <a href={item.href} class="flex gap-3 text-fg hover:text-pulse focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pulse">
+                  <span class="text-fg-subtle">{item.index}</span>{item.label}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </nav>
+
+      <!-- Impressum -->
+      <div class="flex flex-col gap-5 px-5 py-10 sm:px-8 lg:col-span-4 lg:py-12">
+        <h2 class={label}>// Impressum</h2>
         <address class="text-base/[1.6] text-fg-muted not-italic sm:text-sm/[1.6]">
-          {SITE.name}<br />
+          <strong class="font-semibold text-fg">{SITE.name}</strong><br />
           {SITE.owner}<br />
           {SITE.address.street}<br />
           {SITE.address.city}<br />
@@ -26,16 +54,17 @@ const links = [
       </div>
     </div>
 
-    <div class="flex flex-col-reverse gap-4 border-t border-line pt-6 sm:flex-row sm:items-start sm:justify-between">
-      <p class="text-sm text-fg-subtle sm:text-[0.8125rem]">© {year} {SITE.name}</p>
-      <ul role="list" class="flex flex-wrap gap-x-7 gap-y-2">
+    <!-- Status bar -->
+    <div class="flex flex-col gap-4 border-x border-t border-line px-5 py-5 font-mono text-xs tracking-[0.12em] uppercase sm:px-8 lg:flex-row lg:items-center lg:justify-between">
+      <p class="text-fg-subtle">© {year} {SITE.name}</p>
+      <ul role="list" class="flex flex-wrap gap-x-6 gap-y-2">
         {
-          links.map((link) => (
-            <li class="text-sm font-medium sm:text-[0.8125rem]">
+          legal.map((link) => (
+            <li>
               <a
                 href={link.href}
                 {...(link.external ? { target: '_blank', rel: 'noopener' } : {})}
-                class="rounded-sm text-fg-muted hover:text-fg focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pulse"
+                class="text-fg-muted hover:text-pulse focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pulse"
               >
                 {link.label}
               </a>
@@ -43,6 +72,7 @@ const links = [
           ))
         }
       </ul>
+      <p class="flex items-center gap-2 text-fg-subtle"><span class="size-2 rounded-full bg-pulse"></span> Einsatzbereit · 47.37°N 8.54°E</p>
     </div>
   </div>
 </footer>

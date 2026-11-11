@@ -1,22 +1,20 @@
 ---
+import SectionBar from '../SectionBar.astro';
 import Button from '../Button.astro';
-import PulseCta from '../../assets/icons/pulse-cta.svg';
-import { whatsappLink } from '../../site';
+import { contact } from '../../content';
 ---
 
-<section id="kontakt" class="py-20 sm:py-28 lg:py-32">
-  <div class="container-page flex flex-col items-center gap-8 text-center">
-    <PulseCta class="h-auto w-48 sm:w-60" aria-hidden="true" />
-    <h2 class="max-w-[56.25rem] font-display text-[2.5rem]/[1.05] tracking-[-0.02em] text-balance sm:text-6xl/[1.05] lg:text-[4rem]/[1.05]">
-      Bereit für das nächste Level?
-    </h2>
-    <p class="max-w-[40rem] text-lg/[1.55] text-fg-muted sm:text-xl/[1.55]">
-      Vergiss Ausreden. Schreib mir direkt auf WhatsApp – das erste Beratungsgespräch ist kostenlos.
-    </p>
-    <div class="w-full pt-2 sm:w-auto">
-      <Button href={whatsappLink('Hallo Thomas, ich bin bereit für das nächste Level!')} size="xl" icon external class="w-full sm:w-auto">
-        Jetzt starten – WhatsApp-Nachricht senden
-      </Button>
+<section id="kontakt">
+  <div class="container-page">
+    <SectionBar index="04" title="Kontakt" meta="Kanal: WhatsApp" />
+    <div class="grid items-end gap-10 border-x border-line px-5 py-16 sm:px-8 lg:grid-cols-12 lg:py-24">
+      <div class="flex flex-col gap-6 lg:col-span-8">
+        <p class="font-display text-[2.75rem]/[0.95] tracking-[-0.02em] uppercase sm:text-7xl/[0.92]">{contact.title}</p>
+        <p class="max-w-[36rem] text-lg/[1.55] text-fg-muted">{contact.text}</p>
+      </div>
+      <div class="lg:col-span-4 lg:justify-self-end">
+        <Button href={contact.href} icon external class="w-full">Jetzt starten →</Button>
+      </div>
     </div>
   </div>
 </section>

@@ -1,0 +1,15 @@
+---
+// Mono bar that opens each section: "01 — Über mich" on the left, metadata on the right.
+interface Props {
+  index: string;
+  title: string;
+  meta?: string;
+}
+
+const { index, title, meta } = Astro.props;
+---
+
+<div class="flex items-center justify-between gap-4 border-x border-b border-line px-5 py-4 font-mono text-xs tracking-[0.16em] uppercase sm:px-8">
+  <h2 class="text-pulse">{index} — {title}</h2>
+  {meta && <p class="text-fg-subtle max-sm:hidden">{meta}</p>}
+</div>

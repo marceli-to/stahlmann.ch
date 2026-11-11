@@ -1,53 +1,35 @@
 ---
+import SectionBar from '../SectionBar.astro';
 import Target from '../../assets/icons/target.svg';
 import Shield from '../../assets/icons/shield.svg';
 import Restart from '../../assets/icons/restart.svg';
 import ClockFlex from '../../assets/icons/clock-flex.svg';
+import { pillars } from '../../content';
 
-const pillars = [
-  {
-    icon: Target,
-    title: 'Behörden-Sporttests',
-    text: 'Vorbereitung auf die Sporttests von Polizei, Armee, Grenzwacht und Rettungsdiensten. Exakte Simulation von Kraftparcours, Pendellauf und Ausdauer – inklusive Schwimmtraining für die Polizeischule.',
-  },
-  {
-    icon: Shield,
-    title: 'Mentale Stärke',
-    text: 'Mindset-Coaching, Fokus unter Belastung und Strategien gegen den inneren Schweinehund. Für eiserne Disziplin im Sport und im Alltag.',
-  },
-  {
-    icon: Restart,
-    title: 'Back to Sport',
-    text: 'Sicherer, strukturierter Wiederaufbau von Ausdauer und funktioneller Kraft nach einer Pause oder Verletzung.',
-  },
-  {
-    icon: ClockFlex,
-    title: 'Flexibles Personal Training',
-    text: 'Effiziente Trainingsslots unter der Woche, tagsüber oder abends. Ideal für Schichtarbeitende und Selbstständige.',
-  },
-];
+const icons = [Target, Shield, Restart, ClockFlex];
 ---
 
-<section id="angebot" class="py-20 sm:py-24 lg:py-30">
-  <div class="container-page flex flex-col gap-12 lg:gap-14">
-    <div class="flex max-w-[47.5rem] flex-col gap-4">
-      <p class="eyebrow">Mein Angebot</p>
-      <h2 class="font-display text-[2.25rem]/[1.08] tracking-[-0.015em] text-balance sm:text-5xl/[1.08]">Vier Säulen für deinen Erfolg</h2>
-    </div>
-
-    <ul role="list" class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+<section id="angebot" class="border-b border-line">
+  <div class="container-page">
+    <SectionBar index="02" title="Angebot" meta="4 Säulen" />
+    <p class="border-x border-line px-5 pt-12 pb-10 font-display text-[2.25rem]/[1] tracking-[-0.015em] uppercase sm:px-8 sm:text-5xl/[1]">Vier Säulen für deinen Erfolg</p>
+    <ul role="list" class="grid gap-px border border-line bg-line sm:grid-cols-2 lg:grid-cols-4">
       {
-        pillars.map(({ icon: Icon, title, text }) => (
-          <li class="flex flex-col justify-between gap-8 rounded-2xl border border-line bg-ink-850 px-7 py-8 lg:min-h-93">
-            <div class="flex size-14 items-center justify-center rounded-[0.875rem] bg-ink-750">
-              <Icon aria-hidden="true" />
-            </div>
-            <div class="flex flex-col gap-4">
-              <h3 class="text-[1.3125rem]/[1.25] font-bold">{title}</h3>
-              <p class="text-base/[1.58] text-fg-muted sm:text-[0.9375rem]/[1.58]">{text}</p>
-            </div>
-          </li>
-        ))
+        pillars.map((pillar, i) => {
+          const Icon = icons[i];
+          return (
+            <li class="flex flex-col gap-10 bg-ink-900 px-5 py-8 sm:px-7 lg:min-h-96">
+              <div class="flex items-center justify-between">
+                <Icon aria-hidden="true" />
+                <span class="font-mono text-xs tracking-[0.14em] text-fg-subtle">S-0{i + 1}</span>
+              </div>
+              <div class="flex grow flex-col justify-end gap-3">
+                <h3 class="text-xl/[1.25] font-bold">{pillar.title}</h3>
+                <p class="text-base/[1.58] text-fg-muted sm:text-[0.9375rem]/[1.58]">{pillar.text}</p>
+              </div>
+            </li>
+          );
+        })
       }
     </ul>
   </div>

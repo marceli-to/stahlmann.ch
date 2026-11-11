@@ -1,0 +1,166 @@
+---
+// Direction: "Editorial condensed" – sports magazine spread, huge condensed caps, outlined numerals, rules instead of cards.
+import { Image } from 'astro:assets';
+import heroImage from '../../assets/images/hero-training.jpg';
+import portrait from '../../assets/images/portrait.jpg';
+import badge from '../../assets/images/badge-patch.png';
+import ChatDark from '../../assets/icons/chat-dark.svg';
+import PulseCta from '../../assets/icons/pulse-cta.svg';
+import { hero, stats, story, pillars, packages, pricingNote, contact } from '../../content';
+
+const condensed = 'font-sans font-black font-stretch-62% uppercase';
+const btnSolid =
+  'inline-flex items-center justify-center gap-2.5 bg-pulse px-7 py-4.5 text-base font-bold text-pulse-ink hover:bg-[#6fd27d] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pulse';
+const linkUnderline =
+  'inline-flex items-center gap-2 border-b-2 border-fg-subtle py-2 text-base font-bold text-fg hover:border-pulse hover:text-pulse focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-pulse';
+---
+
+<!-- Hero -->
+<section class="pt-10 pb-20 sm:pt-14 lg:pb-32">
+  <div class="container-page flex flex-col gap-10 lg:gap-14">
+    <div class="flex items-baseline justify-between border-b border-line pb-4 text-xs font-semibold tracking-[0.16em] text-fg-subtle uppercase">
+      <p class="text-pulse">{hero.eyebrow}</p>
+      <p class="max-sm:hidden">Ausgabe Zürich · Aargau · Zug</p>
+    </div>
+    <h1 class:list={[condensed, 'text-[3.75rem]/[0.86] tracking-[-0.01em] text-balance sm:text-[6.5rem]/[0.84] lg:text-[9rem]/[0.82]']}>
+      Kondition, Sporttest&shy;vorbereitung <span class="text-pulse">&amp;</span> mentale Stärke.
+    </h1>
+    <div class="grid gap-10 lg:grid-cols-12 lg:gap-12">
+      <div class="lg:col-span-8">
+        <Image src={heroImage} alt="Thomas Stadelmann beim Training mit Battle Ropes in einer Industriehalle" widths={[600, 900, 1106]} sizes="(min-width: 1024px) 780px, 100vw" loading="eager" class="aspect-3/2 w-full object-cover object-[80%_60%]" />
+      </div>
+      <div class="flex flex-col justify-end gap-8 lg:col-span-4">
+        <p class="text-xl/[1.5] text-fg-muted first-letter:float-left first-letter:pr-2 first-letter:font-black first-letter:font-stretch-62% first-letter:text-[4.25rem]/[0.8] first-letter:text-pulse">
+          {hero.lead}
+        </p>
+        <div class="flex flex-wrap items-center gap-x-8 gap-y-4">
+          <a href={hero.ctaHref} target="_blank" rel="noopener" class={btnSolid}><ChatDark aria-hidden="true" /> Kostenloses Erstgespräch</a>
+          <a href="#angebot" class={linkUnderline}>Angebot ansehen</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Stats -->
+<section aria-label="Erfahrung in Zahlen" class="pb-24 lg:pb-36">
+  <dl class="container-page grid gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-4">
+    {
+      stats.map((stat) => (
+        <div class="flex flex-col-reverse justify-end gap-3 border-t-2 border-fg pt-5">
+          <dt class="text-base/[1.45] text-fg-muted">{stat.label}</dt>
+          <dd class:list={[condensed, 'text-[4rem]/[0.9] whitespace-nowrap text-transparent tabular-nums [-webkit-text-stroke:1.5px_var(--color-fg)] xl:text-[4.75rem]/[0.9]']}>{stat.value}</dd>
+        </div>
+      ))
+    }
+  </dl>
+</section>
+
+<!-- Story -->
+<section id="story" class="overflow-x-clip bg-ink-850 py-24 lg:py-40">
+  <div class="container-page flex flex-col gap-16 lg:gap-24">
+    <div class="grid gap-6 lg:grid-cols-12">
+      <h2 class="text-xs font-semibold tracking-[0.16em] text-pulse uppercase lg:col-span-3 lg:pt-4">Über mich</h2>
+      <blockquote class:list={[condensed, 'text-[2.75rem]/[0.95] text-balance sm:text-6xl/[0.92] lg:col-span-9 lg:text-[5.5rem]/[0.9]']}>
+        «{story.quote}»
+      </blockquote>
+    </div>
+    <div class="grid gap-16 lg:grid-cols-12 lg:gap-12">
+      <div class="relative lg:col-span-5">
+        <Image src={portrait} alt="Thomas Stadelmann mit Gewichtsweste und Stahlmann-Patch" widths={[440, 660, 880]} sizes="(min-width: 1024px) 480px, 100vw" class="aspect-4/5 w-full object-cover object-[22%_50%]" />
+        <Image src={badge} alt="" widths={[220, 440]} sizes="176px" class="absolute -right-4 -bottom-10 size-44 rotate-6 sm:-right-10" />
+      </div>
+      <div class="flex flex-col gap-10 lg:col-span-6 lg:col-start-7">
+        <div class="flex flex-col gap-6">
+          <p class:list={[condensed, 'text-4xl/[0.95] sm:text-5xl/[0.95]']}>{story.name}</p>
+          <p class="text-lg/[1.65] text-fg-muted">{story.text}</p>
+        </div>
+        <dl class="flex flex-col">
+          {
+            story.experience.map((item) => (
+              <div class="flex flex-col gap-2 border-t border-line py-5">
+                <dt class="text-xs font-semibold tracking-[0.16em] text-pulse uppercase">{item.label}</dt>
+                <dd class="text-lg/[1.5]">{item.text}</dd>
+              </div>
+            ))
+          }
+        </dl>
+        <p class="text-base/[1.6] text-fg-subtle italic">{story.flex}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Angebot -->
+<section id="angebot" class="py-24 lg:py-40">
+  <div class="container-page flex flex-col gap-14 lg:gap-20">
+    <div class="flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
+      <h2 class:list={[condensed, 'text-[3.25rem]/[0.9] sm:text-7xl/[0.88] lg:text-[6.5rem]/[0.86]']}>Vier Säulen<br />für deinen Erfolg</h2>
+      <p class="text-xs font-semibold tracking-[0.16em] text-pulse uppercase max-lg:order-first">Mein Angebot</p>
+    </div>
+    <ol class="grid gap-x-16 sm:grid-cols-2">
+      {
+        pillars.map((pillar, i) => (
+          <li class="grid grid-cols-[4.5rem_1fr] gap-x-6 gap-y-3 border-t border-line py-10 sm:grid-cols-[6rem_1fr]">
+            <p class:list={[condensed, 'row-span-2 text-6xl/[0.85] text-pulse sm:text-7xl/[0.85]']}>0{i + 1}</p>
+            <h3 class="text-2xl/[1.2] font-bold">{pillar.title}</h3>
+            <p class="text-base/[1.6] text-fg-muted">{pillar.text}</p>
+          </li>
+        ))
+      }
+    </ol>
+  </div>
+</section>
+
+<!-- Preise -->
+<section id="preise" class="bg-ink-850 py-24 lg:py-40">
+  <div class="container-page flex flex-col gap-14 lg:gap-20">
+    <div class="flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
+      <h2 class:list={[condensed, 'text-[3.25rem]/[0.9] sm:text-7xl/[0.88] lg:text-[6.5rem]/[0.86]']}>Wähle deine<br />Mission</h2>
+      <p class="text-xs font-semibold tracking-[0.16em] text-pulse uppercase max-lg:order-first">Preise &amp; Pakete</p>
+    </div>
+    <ul role="list" class="grid gap-y-14 lg:grid-cols-3 lg:divide-x lg:divide-line">
+      {
+        packages.map((pkg) => (
+          <li class="flex flex-col justify-between gap-10 border-t-2 border-fg pt-6 lg:px-10 lg:first:pl-0 lg:last:pr-0">
+            <div class="flex flex-col gap-6">
+              <p class="text-xs font-semibold tracking-[0.16em] uppercase">
+                <span class="text-pulse">{pkg.tag}</span>
+                {pkg.featured && <span class="text-fg-subtle"> · Empfohlen</span>}
+              </p>
+              <h3 class:list={[condensed, 'text-[2.5rem]/[0.92]']}>{pkg.title}</h3>
+              <p class="text-base text-fg-subtle">{pkg.audience}</p>
+              <div class="flex flex-col gap-1">
+                <p class:list={[condensed, 'text-[3.5rem]/[1] text-pulse tabular-nums']}>{pkg.price}</p>
+                <p class="text-sm font-medium text-fg-muted">{pkg.priceNote}</p>
+              </div>
+              <ul role="list" class="flex flex-col gap-2.5 text-base/[1.45]">
+                {pkg.features.map((feature) => (
+                  <li class="flex gap-3"><span class="text-pulse" aria-hidden="true">—</span>{feature}</li>
+                ))}
+              </ul>
+            </div>
+            <div>
+              <a href={pkg.href} target="_blank" rel="noopener" class={pkg.featured ? btnSolid : linkUnderline}>
+                {pkg.featured && <ChatDark aria-hidden="true" />} Via WhatsApp anfragen
+              </a>
+            </div>
+          </li>
+        ))
+      }
+    </ul>
+    <p class="text-sm/[1.5] text-fg-subtle">{pricingNote}</p>
+  </div>
+</section>
+
+<!-- Kontakt -->
+<section id="kontakt" class="py-24 lg:py-40">
+  <div class="container-page flex flex-col gap-10">
+    <PulseCta class="h-auto w-40" aria-hidden="true" />
+    <h2 class:list={[condensed, 'text-[4rem]/[0.86] text-balance sm:text-[7rem]/[0.84] lg:text-[10rem]/[0.82]']}>{contact.title}</h2>
+    <div class="flex flex-col gap-8 border-t border-line pt-8 lg:flex-row lg:items-center lg:justify-between">
+      <p class="max-w-[36rem] text-xl/[1.5] text-fg-muted">{contact.text}</p>
+      <a href={contact.href} target="_blank" rel="noopener" class={btnSolid}><ChatDark aria-hidden="true" /> {contact.cta}</a>
+    </div>
+  </div>
+</section>
