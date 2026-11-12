@@ -34,7 +34,7 @@ import { packages, pricingNote } from '../../content';
                 </li>
               ))}
             </ul>
-            <Button href={pkg.href} variant={pkg.featured ? 'primary' : 'outline'} arrow="right" external class="mt-4 self-end">Via WhatsApp anfragen</Button>
+            <Button href={pkg.href} variant={pkg.featured ? 'primary' : 'outline'} arrow="right" external class="mt-4 self-end">Via WhatsApp anfragen<span class="sr-only">: {pkg.title}</span></Button>
           </li>
         ))
       }
