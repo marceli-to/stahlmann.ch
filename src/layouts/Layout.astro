@@ -106,7 +106,8 @@ const jsonLd = {
     >
       Zum Inhalt springen
     </a>
-    <div class="isolate flex min-h-dvh flex-col overflow-x-clip">
+    <!-- Top padding = fixed header height (h-18 + 1px border) -->
+    <div class="isolate flex min-h-dvh flex-col overflow-x-clip pt-[calc(4.5rem+1px)]">
       <Header />
       <main id="main" tabindex="-1" class="grow focus:outline-none">
         <slot />

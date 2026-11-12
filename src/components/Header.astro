@@ -6,7 +6,8 @@ import { hero, nav } from '../content';
 
 ---
 
-<header class="pulse-line sticky top-0 z-50 border-b border-line bg-ink-900">
+<!-- Fixed, not sticky: sticky inside the overflow-clipped page wrapper jitters while scrolling in mobile Chrome -->
+<header class="pulse-line fixed inset-x-0 top-0 z-50 border-b border-line bg-ink-900">
   <div class="container-page">
     <div class="flex h-18 items-stretch border-x border-line">
       <div class="flex items-center px-5 sm:px-8">
@@ -53,7 +54,7 @@ import { hero, nav } from '../content';
     </div>
   </div>
 
-  <nav id="mobile-menu" aria-label="Mobile Navigation" class="hidden border-t border-line lg:hidden" data-menu-panel>
+  <nav id="mobile-menu" aria-label="Mobile Navigation" class="hidden max-h-[calc(100dvh-4.5rem-1px)] overflow-y-auto overscroll-contain border-t border-line lg:hidden" data-menu-panel>
     <div class="container-page">
       <div class="flex flex-col gap-8 border-x border-line px-5 pt-2 pb-8 sm:px-8">
         <ul role="list" class="flex flex-col">
