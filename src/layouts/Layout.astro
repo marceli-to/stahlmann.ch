@@ -1,4 +1,6 @@
 ---
+import { createHash } from 'node:crypto';
+import { readFileSync } from 'node:fs';
 import '../styles/global.css';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
@@ -15,7 +17,9 @@ const { title, description = SITE.description, noindex = false } = Astro.props;
 const pageTitle = title ? `${title} – ${SITE.name}` : `${SITE.name} – Kondition, Sporttest-Vorbereitung & mentale Stärke`;
 const site = Astro.site ?? new URL(SITE.url);
 const canonical = new URL(Astro.url.pathname, site);
-const ogImage = new URL('/og-image.jpg', site);
+// Content hash in the query: messengers (WhatsApp, iMessage) cache previews per image URL, so a new image needs a new URL
+const ogVersion = createHash('md5').update(readFileSync('public/og-image.jpg')).digest('hex').slice(0, 8);
+const ogImage = new URL(`/og-image.jpg?v=${ogVersion}`, site);
 const ogImageAlt = 'Stahlmann Konditionstrainer – Kondition, Sporttest-Vorbereitung & mentale Stärke';
 const isHome = Astro.url.pathname === '/';
 
