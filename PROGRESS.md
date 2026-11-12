@@ -1,6 +1,6 @@
 # Progress – stahlmann.ch
 
-Status as of 11 November 2026. Onepager for **Stahlmann Konditionstrainer** (Thomas Stadelmann): fitness coaching, sport-test prep for Polizei/Armee/Rettungsdienste, mental coaching – Zürich, Aargau, Zug.
+Status as of 12 November 2026. Onepager for **Stahlmann Konditionstrainer** (Thomas Stadelmann): fitness coaching, sport-test prep for Polizei/Armee/Rettungsdienste, mental coaching – Zürich, Aargau, Zug.
 
 ## Pick up on another machine
 
@@ -41,6 +41,9 @@ Decisions so far:
 | Mobile layout | Designed by us (Figma has desktop only) |
 | Legal pages | Separate `/impressum` and `/datenschutz` |
 | Photo hover | Short shake on the hero and portrait photos; corner brackets stay still (`animate-shake`, off with reduced motion) |
+| Angebot cards | No icons; title is a numbered green mono h3 (`01 Behörden-Sporttests`) |
+| Card alignment | Angebot and Preise cards use CSS subgrid so titles, texts, prices and buttons line up across columns |
+| Hinweis note (Story) | Green-tinted box (`bg-pulse-tint`) with white text – bright green with white text fails contrast |
 | Signal pulse | Green streak runs along the header line and each section bar (`pulse-line` utility in `global.css`, staggered, off with reduced motion) |
 
 ## Structure
@@ -51,13 +54,15 @@ src/
   content.ts              All page copy + nav, shared by every section
   styles/global.css       Fonts, theme tokens, container-page utility
   layouts/                Layout (head, header, footer), LegalLayout
-  pages/                  index, impressum, datenschutz, 404
+  pages/                  index, impressum, datenschutz, 404, og (share-image template)
   components/
     Header, Footer, Logo, Button, SectionBar, Brackets
     sections/             Hero, Credentials, Story, Angebot, Preise, Kontakt
     archive/              Unused design directions (see archive/README.md)
 public/                   favicon.svg, apple-touch-icon.png, og-image.jpg, robots.txt, .htaccess
 LocalValetDriver.php      Herd: serves dist/ locally (not deployed)
+deploy.sh                 Build + rsync to Hostpoint (staging default, production TODO)
+scripts/og-image.sh       `npm run og`: renders public/og-image.jpg
 ```
 
 ## Open before go-live
@@ -68,7 +73,15 @@ LocalValetDriver.php      Herd: serves dist/ locally (not deployed)
 - [ ] Datenschutz text is a first draft (Swiss DSG) – have it reviewed
 - [ ] Once the address is final: add it to the JSON-LD in `Layout.astro` (left out on purpose while placeholders)
 - [x] Share image `public/og-image.jpg` (1200×630) is rendered from `src/pages/og.astro` – re-render with `npm run og` if headline or photo change
-- [ ] Deploy: `npm run build`, upload the contents of `dist/` (incl. `.htaccess`) to the Hostpoint web root
+- [ ] Staging: `stahlmann.ch.marceli.to` did not resolve yet (12 Nov). Once it does: `./deploy.sh --dry-run`, then `./deploy.sh` (never run so far)
+- [ ] Production: set `HOST_PRODUCTION` / `WEBROOT_PRODUCTION` at the top of `deploy.sh`, then `./deploy.sh production`
+
+## Deployment
+
+`./deploy.sh` builds the committed state (refuses uncommitted changes) with `SITE_URL` set to the target domain, so canonical/OG/sitemap/llms.txt point there, and rsyncs `dist/` over SSH.
+
+- Staging: `pumutuxu@marceli.to:/home/pumutuxu/www/stahlmann.ch/public` → https://stahlmann.ch.marceli.to; gets a `noindex` header and a blocking robots.txt
+- Production: not configured yet
 
 ## Ideas / not done
 
