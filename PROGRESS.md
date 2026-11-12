@@ -67,7 +67,7 @@ LocalValetDriver.php      Herd: serves dist/ locally (not deployed)
 - [ ] `src/site.ts`: Impressum address, e-mail, phone (currently `[Strasse Nr.]` etc.)
 - [ ] Datenschutz text is a first draft (Swiss DSG) – have it reviewed
 - [ ] Once the address is final: add it to the JSON-LD in `Layout.astro` (left out on purpose while placeholders)
-- [ ] Share image `public/og-image.jpg` (1200×630) was rendered from an HTML mock of the hero – re-render if headline or photo change
+- [x] Share image `public/og-image.jpg` (1200×630) is rendered from `src/pages/og.astro` – re-render with `npm run og` if headline or photo change
 - [ ] Deploy: `npm run build`, upload the contents of `dist/` (incl. `.htaccess`) to the Hostpoint web root
 
 ## Ideas / not done

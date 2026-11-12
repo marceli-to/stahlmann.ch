@@ -1,0 +1,58 @@
+---
+// Template for the share image public/og-image.jpg (1200×630). Not linked anywhere, noindex,
+// excluded from the sitemap. Re-render with `npm run og` after changing the headline or photo.
+import '../styles/global.css';
+import { Image } from 'astro:assets';
+import Brackets from '../components/Brackets.astro';
+import PulseWordmark from '../assets/icons/pulse-wordmark.svg';
+import heroImage from '../assets/images/hero-training.jpg';
+import { hero } from '../content';
+---
+
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="robots" content="noindex" />
+    <title>Share image</title>
+  </head>
+  <body class="m-0 bg-ink-900 text-fg antialiased">
+    <div class="relative grid h-[630px] w-[1200px] grid-rows-[96px_1fr_64px] overflow-hidden">
+      <!-- Frame: container lines left/right, column split -->
+      <div aria-hidden="true" class="absolute inset-y-0 left-14 border-l border-line"></div>
+      <div aria-hidden="true" class="absolute inset-y-0 right-14 border-l border-line"></div>
+      <div aria-hidden="true" class="absolute inset-y-0 left-[744px] border-l border-line"></div>
+
+      <header class="relative flex items-center justify-between border-b border-line px-26">
+        <div class="flex flex-col items-start gap-1.5">
+          <div class="font-display text-[2rem] leading-none tracking-[-0.01em]">STAHLMANN</div>
+          <div class="flex items-center gap-2">
+            <PulseWordmark class="h-4 w-12" aria-hidden="true" />
+            <div class="text-[0.6875rem] leading-none font-semibold tracking-[0.14em] text-pulse">KONDITIONSTRAINER</div>
+          </div>
+        </div>
+        <p class="font-mono text-sm tracking-[0.16em] text-fg-subtle uppercase">Dossier 01</p>
+        <!-- Resting signal pulse on the header line -->
+        <div aria-hidden="true" class="absolute -bottom-px left-[360px] h-0.5 w-[360px] bg-linear-to-r from-transparent via-pulse to-transparent shadow-[0_0_10px_var(--color-pulse)]"></div>
+      </header>
+
+      <main class="grid grid-cols-[688px_1fr] items-center">
+        <div class="flex flex-col gap-7 pr-12 pl-26">
+          <p class="font-mono text-sm tracking-[0.16em] text-pulse uppercase">// Konditionstrainer · Zürich · Aargau · Zug</p>
+          <h1 class="font-display text-[3.375rem]/[0.98] tracking-[-0.02em] uppercase">{hero.title}</h1>
+        </div>
+        <div class="flex justify-center">
+          <div class="relative w-[296px]">
+            <Brackets />
+            <Image src={heroImage} alt="" width={600} class="aspect-4/5 w-full object-cover object-right grayscale-[35%]" />
+          </div>
+        </div>
+      </main>
+
+      <footer class="flex items-center justify-between border-t border-line px-26 font-mono text-sm tracking-[0.16em] uppercase">
+        <p class="flex items-center gap-2.5 text-pulse"><span class="size-2 rounded-full bg-pulse"></span> Einsatzbereit</p>
+        <p class="text-fg-subtle">stahlmann.ch</p>
+      </footer>
+    </div>
+  </body>
+</html>
