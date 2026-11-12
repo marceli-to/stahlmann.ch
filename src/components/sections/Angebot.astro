@@ -1,35 +1,23 @@
 ---
 import SectionBar from '../SectionBar.astro';
-import Target from '../../assets/icons/target.svg';
-import Shield from '../../assets/icons/shield.svg';
-import Restart from '../../assets/icons/restart.svg';
-import ClockFlex from '../../assets/icons/clock-flex.svg';
 import { pillars } from '../../content';
-
-const icons = [Target, Shield, Restart, ClockFlex];
 ---
 
 <section id="angebot" aria-labelledby="angebot-title" class="border-b border-line">
   <div class="container-page">
     <SectionBar index="02" title="Angebot" meta="4 Säulen" />
     <h2 id="angebot-title" class="border-x border-line px-5 pt-12 pb-10 font-display text-[2.25rem]/[1] tracking-[-0.015em] uppercase sm:px-8 sm:text-5xl/[1]">Vier Säulen für deinen Erfolg</h2>
-    <ul role="list" class="grid gap-px border border-line bg-line sm:grid-cols-2 lg:grid-cols-4">
+    <ul role="list" class="grid gap-px border-x border-t border-line bg-line sm:grid-cols-2 lg:grid-cols-4">
       {
-        pillars.map((pillar, i) => {
-          const Icon = icons[i];
-          return (
-            <li class="flex flex-col gap-10 bg-ink-900 px-5 py-8 sm:px-7 lg:min-h-96">
-              <div class="flex items-center justify-between">
-                <Icon aria-hidden="true" />
-                <span aria-hidden="true" class="font-mono text-xs tracking-[0.14em] text-fg-subtle">S-0{i + 1}</span>
-              </div>
-              <div class="flex grow flex-col justify-end gap-3">
-                <h3 class="text-xl/[1.25] font-bold">{pillar.title}</h3>
-                <p class="text-base/[1.58] text-fg-muted sm:text-[0.9375rem]/[1.58]">{pillar.text}</p>
-              </div>
-            </li>
-          );
-        })
+        pillars.map((pillar, i) => (
+          // Subgrid: titles and texts line up across all columns, even when a title wraps
+          <li class="row-span-2 grid grid-rows-subgrid gap-y-4 bg-ink-900 px-5 pt-8 pb-10 sm:px-7">
+            <h3 class="font-mono text-sm/6 tracking-[0.14em] text-pulse uppercase">
+              <span aria-hidden="true">0{i + 1} </span>{pillar.title}
+            </h3>
+            <p class="text-base/[1.58] text-fg-muted sm:text-[0.9375rem]/[1.58]">{pillar.text}</p>
+          </li>
+        ))
       }
     </ul>
   </div>

@@ -12,30 +12,29 @@ import { packages, pricingNote } from '../../content';
     <ul role="list" class="grid gap-px border border-line bg-line lg:grid-cols-3">
       {
         packages.map((pkg) => (
-          <li class:list={['flex flex-col justify-between gap-10 px-5 py-8 sm:px-8', pkg.featured ? 'bg-pulse-tint shadow-[inset_0_3px_0_var(--color-pulse)]' : 'bg-ink-900']}>
-            <div class="flex flex-col gap-6">
-              <div class="flex items-center justify-between gap-3 font-mono text-xs tracking-[0.14em] uppercase">
-                <span class="text-pulse">{pkg.tag}</span>
-                {pkg.featured && <span class="bg-pulse px-2 py-1 text-pulse-ink">Empfohlen</span>}
-              </div>
-              <div class="flex flex-col gap-2">
-                <h3 class="font-display text-2xl/[1.1] uppercase">{pkg.title}</h3>
-                <p class="text-base text-fg-subtle sm:text-sm">{pkg.audience}</p>
-              </div>
-              <div class="flex flex-col gap-1 border-y border-line py-5">
-                <p class="font-mono text-4xl font-bold tracking-[-0.03em] tabular-nums">{pkg.price}</p>
-                <p class="font-mono text-xs tracking-[0.08em] text-fg-muted uppercase">{pkg.priceNote}</p>
-              </div>
-              <ul role="list" class="flex flex-col">
-                {pkg.features.map((feature) => (
-                  <li class="flex gap-3 border-b border-dashed border-line py-2.5 text-base/[1.4] last:border-0 sm:text-[0.9375rem]/[1.4]">
-                    <Check class="h-lh shrink-0" aria-hidden="true" />
-                    {feature}
-                  </li>
-                ))}
-              </ul>
+          // Subgrid: tag, title, price, features and button line up across all cards
+          <li class:list={['row-span-5 grid grid-rows-subgrid gap-y-6 px-5 py-8 sm:px-8', pkg.featured ? 'bg-pulse-tint shadow-[inset_0_3px_0_var(--color-pulse)]' : 'bg-ink-900']}>
+            <div class="flex items-center justify-between gap-3 font-mono text-xs tracking-[0.14em] uppercase">
+              <span class="text-pulse">{pkg.tag}</span>
+              {pkg.featured && <span class="bg-pulse px-2 py-1 text-pulse-ink">Empfohlen</span>}
             </div>
-            <Button href={pkg.href} variant={pkg.featured ? 'primary' : 'outline'} arrow="right" external>Via WhatsApp anfragen</Button>
+            <div class="flex flex-col gap-2">
+              <h3 class="font-display text-2xl/[1.1] uppercase">{pkg.title}</h3>
+              <p class="text-base text-fg-subtle sm:text-sm">{pkg.audience}</p>
+            </div>
+            <div class="flex flex-col gap-1 border-y border-line py-5">
+              <p class="font-mono text-4xl font-bold tracking-[-0.03em] tabular-nums">{pkg.price}</p>
+              <p class="font-mono text-xs tracking-[0.08em] text-fg-muted uppercase">{pkg.priceNote}</p>
+            </div>
+            <ul role="list" class="flex flex-col">
+              {pkg.features.map((feature) => (
+                <li class="flex gap-3 border-b border-dashed border-line py-2.5 text-base/[1.4] last:border-0 sm:text-[0.9375rem]/[1.4]">
+                  <Check class="h-lh shrink-0" aria-hidden="true" />
+                  {feature}
+                </li>
+              ))}
+            </ul>
+            <Button href={pkg.href} variant={pkg.featured ? 'primary' : 'outline'} arrow="right" external class="mt-4 self-end">Via WhatsApp anfragen</Button>
           </li>
         ))
       }

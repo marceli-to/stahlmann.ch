@@ -5,7 +5,8 @@ import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://stahlmann.ch',
+  // SITE_URL is set by deploy.sh so staging builds point canonical/OG/sitemap at the staging domain
+  site: process.env.SITE_URL ?? 'https://stahlmann.ch',
 
   // Static output for Hostpoint (upload dist/)
   vite: {

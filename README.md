@@ -21,7 +21,15 @@ npm run build    # static site in dist/
 
 ## Deployment (Hostpoint)
 
-Run `npm run build` and upload the contents of `dist/` to the web root.
+`./deploy.sh` builds the committed state locally and rsyncs `dist/` to the server over SSH.
+
+```sh
+./deploy.sh              # staging: https://stahlmann.ch.marceli.to
+./deploy.sh production   # https://stahlmann.ch (web root not set yet, see top of deploy.sh)
+./deploy.sh --dry-run    # show what would change
+```
+
+Staging gets a `noindex` header and a robots.txt that blocks all crawlers.
 
 ## Herd
 
