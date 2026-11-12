@@ -44,6 +44,7 @@ Decisions so far:
 | Angebot cards | No icons; title is a numbered green mono h3 (`01 Behörden-Sporttests`) |
 | Card alignment | Angebot and Preise cards use CSS subgrid so titles, texts, prices and buttons line up across columns |
 | Hinweis note (Story) | Green-tinted box (`bg-pulse-tint`) with white text – bright green with white text fails contrast |
+| Header | `position: fixed` (not sticky) – sticky inside the `overflow-x-clip` page wrapper jittered while scrolling in mobile Chrome; wrapper has matching `pt-[calc(4.5rem+1px)]`. Solid background, no backdrop blur (iOS flicker) |
 | Signal pulse | Green streak runs along the header line and each section bar (`pulse-line` utility in `global.css`, staggered, off with reduced motion) |
 
 ## Structure
@@ -72,8 +73,8 @@ scripts/og-image.sh       `npm run og`: renders public/og-image.jpg
 - [ ] `src/site.ts`: Impressum address, e-mail, phone (currently `[Strasse Nr.]` etc.)
 - [ ] Datenschutz text is a first draft (Swiss DSG) – have it reviewed
 - [ ] Once the address is final: add it to the JSON-LD in `Layout.astro` (left out on purpose while placeholders)
-- [x] Share image `public/og-image.jpg` (1200×630) is rendered from `src/pages/og.astro` – re-render with `npm run og` if headline or photo change
-- [ ] Staging: `stahlmann.ch.marceli.to` did not resolve yet (12 Nov). Once it does: `./deploy.sh --dry-run`, then `./deploy.sh` (never run so far)
+- [x] Share image `public/og-image.jpg` (1200×630) is rendered from `src/pages/og.astro` – re-render with `npm run og` if headline or photo change. `og:image` carries a content hash (`?v=…`) so messengers refetch it; WhatsApp also caches per page URL, so test with a fresh one (e.g. `/?x=2`)
+- [x] Staging live at https://stahlmann.ch.marceli.to, deployed with `./deploy.sh`
 - [ ] Production: set `HOST_PRODUCTION` / `WEBROOT_PRODUCTION` at the top of `deploy.sh`, then `./deploy.sh production`
 
 ## Deployment
@@ -82,6 +83,19 @@ scripts/og-image.sh       `npm run og`: renders public/og-image.jpg
 
 - Staging: `pumutuxu@marceli.to:/home/pumutuxu/www/stahlmann.ch/public` → https://stahlmann.ch.marceli.to; gets a `noindex` header and a blocking robots.txt
 - Production: not configured yet
+
+## Recent fixes (12 Nov)
+
+- Stats grid (Credentials) overflowed at 360–390px: smaller values with tight leading on phones, hyphenated labels
+- Header jitter/flicker on mobile: see Header decision above
+- Mobile menu: numbers vertically centred on labels; panel scrolls itself if taller than the screen
+- WhatsApp showed the apple-touch-icon instead of the share image (stale preview cache) – cache-busting query on `og:image`
+
+## Next
+
+- Confirm on a phone that the header no longer jitters; if it does, turn off the `pulse-line` animation on the header next
+- Confirm the WhatsApp preview with a fresh URL
+- Fill in the go-live placeholders above
 
 ## Ideas / not done
 
