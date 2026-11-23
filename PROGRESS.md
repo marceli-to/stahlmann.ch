@@ -25,7 +25,7 @@ Optional, Laravel Herd: if the folder sits in a parked Herd directory, `LocalVal
 
 ## Design
 
-Source: Figma file "Stahlmann – Logo / Wortmarke" – page **Website – Onepager** (desktop 1440 only) and page **Brand** (logo/wordmark/icon exploration).
+Source: Figma file "Stahlmann – Logo / Wortmarke" (https://www.figma.com/design/esJLCEg4PyIGOxQUeooJxc/Stahlmann-%E2%80%93-Logo---Wortmarke, fileKey `esJLCEg4PyIGOxQUeooJxc`; logo "Wortmarke 2 – Mit Pulslinie" is node `1:114`) – page **Website – Onepager** (desktop 1440 only) and page **Brand** (logo/wordmark/icon exploration).
 
 Current direction: **"Tactical briefing"** – mission-dossier look. Mono section bars ("01 — Über mich"), square buttons, visible 1px line grid continuing through header and footer, green corner brackets on photos, pricing as a spec table. Colours unchanged from Figma (tokens in `src/styles/global.css`: `ink-*`, `line`, `fg*`, `pulse*`).
 

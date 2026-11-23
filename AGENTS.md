@@ -20,3 +20,13 @@ Consult these guides before working on related tasks:
 - [Adding or managing content](https://docs.astro.build/en/guides/content-collections/)
 - [Adding styles or using Tailwind](https://docs.astro.build/en/guides/styling/)
 - [Supporting multiple languages](https://docs.astro.build/en/guides/internationalization/)
+
+## Design source
+
+Figma file "Stahlmann – Logo / Wortmarke": https://www.figma.com/design/esJLCEg4PyIGOxQUeooJxc/Stahlmann-%E2%80%93-Logo---Wortmarke
+
+- fileKey: `esJLCEg4PyIGOxQUeooJxc`
+- Pages: **Website – Onepager** (desktop 1440) and **Brand** (logo/wordmark/icon)
+- Logo in use, "Wortmarke 2 – Mit Pulslinie": node `1:114` (pulse graphic `1:120`)
+
+See `PROGRESS.md` for design decisions and current status.
