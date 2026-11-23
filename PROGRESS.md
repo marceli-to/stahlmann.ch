@@ -92,6 +92,16 @@ scripts/og-image.sh       `npm run og`: renders public/og-image.jpg
 - Coordinates in hero and footer: 47.1795°N 8.5553°E (from the client)
 - Real contact details; e-mail and phone are links
 
+## Business cards (23 Nov)
+
+Figma page **Visitenkarten** (node `19:35`) in the same file. Cards are 85 × 55 mm, built at 1 px = 1 pt so a Figma PDF export comes out at real size. Fonts as on the site (Archivo Black, Geist, JetBrains Mono); logo is an instance of the logo component.
+
+- Three options: **A · Dossier** (dark, grid lines, mono labels, coordinates), **B · Klar** (white front, dark back with green brackets), **C · Signal** (solid green front, black back)
+- A and C sent to Thomas as preview PDFs (front and back side by side)
+- Print versions of A and C in the "Druckdaten" row: 88 × 58 mm incl. 1.5 mm bleed (printer spec: trim 85 × 55, safe area 82 × 52); backgrounds, grid and pulse lines run into the bleed, all text inside the safe area. Frames `Druck · A/C · Vorderseite/Rückseite` (`23:45`, `23:61`, `23:85`, `23:91`) carry PDF + SVG export settings – export vector files from Figma there
+- Raster fallbacks (600 dpi PNG and PDF at 88 × 58 mm) were saved locally, outside the repo
+- Colours are RGB; ask the printer about CMYK/Pantone for the green, especially for the full green front of C
+
 ## Recent fixes (12 Nov)
 
 - Stats grid (Credentials) overflowed at 360–390px: smaller values with tight leading on phones, hyphenated labels
@@ -103,6 +113,7 @@ scripts/og-image.sh       `npm run og`: renders public/og-image.jpg
 
 - Open questions sent to Thomas (`Fragen an Thomas.txt`): Premium title ("Coaching nach Mass" is our pick), session length wording, "Offensive Line", whether the Premium package features stay now that it is priced on request
 - Deploy the 23 Nov changes to staging (`./deploy.sh`)
+- Business cards: Thomas picks A or C; then export vector PDFs from the Figma print frames and order
 
 - Confirm on a phone that the header no longer jitters; if it does, turn off the `pulse-line` animation on the header next
 - Confirm the WhatsApp preview with a fresh URL
