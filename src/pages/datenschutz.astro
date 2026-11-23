@@ -15,7 +15,7 @@ import { SITE } from '../site';
   <p>
     {SITE.name}, {SITE.owner}<br />
     {SITE.address.street}, {SITE.address.city}<br />
-    {SITE.address.email}
+    <a href={`mailto:${SITE.address.email}`}>{SITE.address.email}</a>
   </p>
 
   <h2>Hosting und Server-Logfiles</h2>

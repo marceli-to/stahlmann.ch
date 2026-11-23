@@ -1,12 +1,9 @@
 ---
-// Wordmark (Figma Brand, Wortmarke 2): the pulse line leads into the subline.
-import PulseWordmark from '../assets/icons/pulse-wordmark.svg';
+// Logo (Figma Brand, "Logo / Stahlmann Konditionstrainer"): outlined SVG,
+// STAHLMANN in currentColor, subline spans to the wordmark's right edge.
+import LogoSvg from '../assets/icons/logo.svg';
 ---
 
-<a href="/" aria-label="Stahlmann Konditionstrainer – zur Startseite" class="flex shrink-0 flex-col items-start gap-1 whitespace-nowrap focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-pulse">
-  <div class="font-display text-[1.625rem] leading-none tracking-[-0.01em] text-fg">STAHLMANN</div>
-  <div class="flex items-center gap-1.5">
-    <PulseWordmark class="h-3.5 w-10.5" aria-hidden="true" />
-    <div class="text-[0.5625rem] leading-none font-semibold tracking-[0.14em] text-pulse">KONDITIONSTRAINER</div>
-  </div>
+<a href="/" aria-label="Stahlmann Konditionstrainer – zur Startseite" class="flex shrink-0 text-fg focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-pulse">
+  <LogoSvg class="h-11 w-auto" aria-hidden="true" />
 </a>

@@ -49,7 +49,8 @@ const label = 'font-mono text-xs tracking-[0.16em] text-pulse uppercase';
           {SITE.owner}<br />
           {SITE.address.street}<br />
           {SITE.address.city}<br />
-          {SITE.address.email} · {SITE.address.phone}
+          <a href={`mailto:${SITE.address.email}`} class="hover:text-fg">{SITE.address.email}</a><br />
+          <a href={SITE.address.phoneHref} class="hover:text-fg">{SITE.address.phone}</a>
         </address>
       </div>
     </div>
@@ -73,7 +74,7 @@ const label = 'font-mono text-xs tracking-[0.16em] text-pulse uppercase';
           ))
         }
       </ul>
-      <p class="flex items-center gap-2 text-fg-subtle"><span aria-hidden="true" class="size-2 rounded-full bg-pulse"></span> Einsatzbereit · 47.37°N 8.54°E</p>
+      <p class="flex items-center gap-2 text-fg-subtle"><span aria-hidden="true" class="size-2 rounded-full bg-pulse"></span> Einsatzbereit · 47.1795°N 8.5553°E</p>
     </div>
   </div>
 </footer>

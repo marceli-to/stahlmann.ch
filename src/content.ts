@@ -9,24 +9,28 @@ export const hero = {
 };
 
 export const stats = [
-  { value: '15 Jahre', label: 'Sicherheitsbehörde (Polizei)' },
-  { value: '2×', label: 'Auslandseinsatz NATO, Spezialinfanterie' },
-  { value: '30+ Jahre', label: 'Leistungssport: Football, Ironman, Marathon' },
-  { value: 'Aktuell', label: 'Feuerwehr, Intervention' },
+  { value: '15 Jahre', label: 'Sicherheitsbehörde' },
+  { value: '2×', label: 'Auslandseinsatz KFOR / NATO' },
+  { value: '30+ Jahre', label: 'Leistungssport: American Football' },
+  { value: 'Aktuell', label: 'Feuerwehr-Intervention' },
 ];
 
 export const story = {
   name: 'Thomas «Stahlmann» Stadelmann',
-  text: 'Polizei, Spezialinfanterie, Feuerwehr: In meinem Beruf habe ich gelernt, unter Druck klar und handlungsfähig zu bleiben. Als Athlet – über 30 Jahre American Football, dazu Ironman und Marathons – weiss ich, was es heisst, Körper und Kopf an die Grenze zu bringen. Ich kenne die physischen und mentalen Hürden aus eigener Erfahrung, bis hin zu einem Motorrad-Weltrekord in der Todeskugel. Und ich zeige dir, wie du sie überwindest.',
+  text: 'Sicherheitsbehörde, Spezialinfanterie, Feuerwehr-Intervention: In meinem Beruf habe ich gelernt, unter Druck klar und handlungsfähig zu bleiben. Als Athlet – über 30 Jahre American Football, dazu Ironman und Marathons – weiss ich, was es heisst, Körper und Kopf an die Grenze zu bringen. Ich kenne die physischen und mentalen Hürden aus eigener Erfahrung, bis hin zu einem Motorrad-Weltrekord in der Todeskugel. Und ich zeige dir, wie du sie überwindest.',
   quote: 'Ich kenne die physischen und mentalen Hürden aus eigener Erfahrung. Und ich zeige dir, wie du sie überwindest.',
   experience: [
     {
       label: 'Beruf',
-      text: '15 Jahre Sicherheitsbehörde, zwei Auslandseinsätze in einer Spezialinfanterie, heute Feuerwehr / Intervention.',
+      text: '15 Jahre Sicherheitsbehörde, zwei Auslandseinsätze in einer Spezialinfanterie, heute Feuerwehr-Intervention.',
     },
     {
       label: 'Frauensport',
-      text: '5 Jahre Konditionscoach für Damenteams im Unihockey – mit Fokus auf Verletzungsprävention und Leistungssteigerung.',
+      text: '5 Jahre Konditionstrainer / Med.-Coach für Damenteams im Unihockey – mit Fokus auf Verletzungsprävention und Leistungssteigerung.',
+    },
+    {
+      label: 'Männersport',
+      text: 'Coaching im American Football: Defensive Line / Offensive Line und Konditionstrainer.',
     },
     {
       label: 'Sport',
@@ -62,7 +66,7 @@ export const packages = [
     audience: 'Für: Polizei, Armee, Grenzwacht',
     price: "CHF 1'450.–",
     priceNote: 'oder 3 × CHF 490.–',
-    features: ['3 Monate Laufzeit', '12 × Personal Training (1:1)', 'Exakte Test-Simulation', 'Trainingsplan für freie Tage', 'Mentaltraining'],
+    features: ['3 Monate Laufzeit', '12 × Personal Training (1:1)', 'Exakte Test-Simulation', 'Trainingsplan für freie Tage', 'Mentaltraining', 'Sportbetreuung: Taping, Erstversorgung bei Sportverletzungen, Ernährung'],
     featured: true,
   },
   {
@@ -71,21 +75,21 @@ export const packages = [
     audience: 'Für: Athletinnen, Athleten & Wiedereinsteiger',
     price: "CHF 1'350.–",
     priceNote: 'CHF 135.– pro Session',
-    features: ['10 × Kondition & Athletik (1:1)', 'Flexibel buchbare Slots', 'Ideal für Schichtarbeitende', 'Outdoor oder im Partner-Gym'],
+    features: ['10 × Kondition & Athletik (1:1)', 'Flexibel buchbare Slots', 'Ideal für Schichtarbeitende', 'Outdoor oder im Partner-Gym', 'Sportbetreuung: Taping, Erstversorgung bei Sportverletzungen, Ernährung'],
     featured: false,
   },
   {
     tag: 'Premium-Coaching',
-    title: 'Mind & Body Transformation',
+    title: 'Coaching nach Mass',
     audience: 'Für: Persönliche Weiterentwicklung',
-    price: 'CHF 450.–',
-    priceNote: 'pro Monat · mind. 3 Monate',
+    price: 'Auf Anfrage',
+    priceNote: 'Auftragsbezogenes Coaching',
     features: ['Wöchentliches 1:1 Training', 'Wöchentlicher Mindset-Call (30 Min.)', 'Gewohnheiten & Routinen', 'WhatsApp-Support bei Motivationslöchern'],
     featured: false,
   },
 ].map((pkg) => ({ ...pkg, href: whatsappLink(`Hallo Thomas, ich interessiere mich für das Paket «${pkg.title}».`) }));
 
-export const pricingNote = 'Alle Preise in CHF inkl. allfälliger MWST. Ort: Outdoor oder Partner-Gym in der Region Zürich, Aargau und Zug.';
+export const pricingNote = '1 Session = 1 Lektion à 2 Stunden. Alle Preise in CHF inkl. allfälliger MWST. Ort: Outdoor oder Partner-Gym in der Region Zürich, Aargau und Zug.';
 
 export const contact = {
   title: 'Bereit für das nächste Level?',

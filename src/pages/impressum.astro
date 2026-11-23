@@ -13,8 +13,8 @@ import { SITE } from '../site';
     Schweiz
   </p>
   <p>
-    E-Mail: {SITE.address.email}<br />
-    Telefon: {SITE.address.phone}
+    E-Mail: <a href={`mailto:${SITE.address.email}`}>{SITE.address.email}</a><br />
+    Telefon: <a href={SITE.address.phoneHref}>{SITE.address.phone}</a>
   </p>
 
   <h2>Verantwortlich für den Inhalt</h2>

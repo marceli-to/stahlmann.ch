@@ -4,7 +4,7 @@
 import '../styles/global.css';
 import { Image } from 'astro:assets';
 import Brackets from '../components/Brackets.astro';
-import PulseWordmark from '../assets/icons/pulse-wordmark.svg';
+import LogoSvg from '../assets/icons/logo.svg';
 import heroImage from '../assets/images/hero-training.jpg';
 import { hero } from '../content';
 ---
@@ -24,13 +24,7 @@ import { hero } from '../content';
       <div aria-hidden="true" class="absolute inset-y-0 left-[744px] border-l border-line"></div>
 
       <header class="relative flex items-center justify-between border-b border-line px-26">
-        <div class="flex flex-col items-start gap-1.5">
-          <div class="font-display text-[2rem] leading-none tracking-[-0.01em]">STAHLMANN</div>
-          <div class="flex items-center gap-2">
-            <PulseWordmark class="h-4 w-12" aria-hidden="true" />
-            <div class="text-[0.6875rem] leading-none font-semibold tracking-[0.14em] text-pulse">KONDITIONSTRAINER</div>
-          </div>
-        </div>
+        <LogoSvg class="h-14 w-auto text-fg" aria-hidden="true" />
         <p class="font-mono text-sm tracking-[0.16em] text-fg-subtle uppercase">Dossier 01</p>
         <!-- Resting signal pulse on the header line -->
         <div aria-hidden="true" class="absolute -bottom-px left-[360px] h-0.5 w-[360px] bg-linear-to-r from-transparent via-pulse to-transparent shadow-[0_0_10px_var(--color-pulse)]"></div>
