@@ -1,6 +1,6 @@
 # Progress – stahlmann.ch
 
-Status as of 12 November 2026. Onepager for **Stahlmann Konditionstrainer** (Thomas Stadelmann): fitness coaching, sport-test prep for Polizei/Armee/Rettungsdienste, mental coaching – Zürich, Aargau, Zug.
+Status as of 23 November 2026. Onepager for **Stahlmann Konditionstrainer** (Thomas Stadelmann): fitness coaching, sport-test prep for Polizei/Armee/Rettungsdienste, mental coaching – Zürich, Aargau, Zug.
 
 ## Pick up on another machine
 
@@ -25,7 +25,7 @@ Optional, Laravel Herd: if the folder sits in a parked Herd directory, `LocalVal
 
 ## Design
 
-Source: Figma file "Stahlmann – Logo / Wortmarke" (https://www.figma.com/design/esJLCEg4PyIGOxQUeooJxc/Stahlmann-%E2%80%93-Logo---Wortmarke, fileKey `esJLCEg4PyIGOxQUeooJxc`; logo "Wortmarke 2 – Mit Pulslinie" is node `1:114`) – page **Website – Onepager** (desktop 1440 only) and page **Brand** (logo/wordmark/icon exploration).
+Source: Figma file "Stahlmann – Logo / Wortmarke" (https://www.figma.com/design/esJLCEg4PyIGOxQUeooJxc/Stahlmann-%E2%80%93-Logo---Wortmarke, fileKey `esJLCEg4PyIGOxQUeooJxc`; final logo is component `Logo / Stahlmann Konditionstrainer`, node `17:46`, on the Brand page; the earlier exploration "Wortmarke 2 – Mit Pulslinie" is node `1:114`) – page **Website – Onepager** (desktop 1440 only) and page **Brand** (logo/wordmark/icon exploration).
 
 Current direction: **"Tactical briefing"** – mission-dossier look. Mono section bars ("01 — Über mich"), square buttons, visible 1px line grid continuing through header and footer, green corner brackets on photos, pricing as a spec table. Colours unchanged from Figma (tokens in `src/styles/global.css`: `ink-*`, `line`, `fg*`, `pulse*`).
 
@@ -34,7 +34,7 @@ Decisions so far:
 | Topic | Decision |
 | --- | --- |
 | Layout direction | Tactical briefing (picked from 5 directions; others archived) |
-| Logo | Figma Brand "Wortmarke 2 – Mit Pulslinie" (no icon tile) |
+| Logo | Outlined SVG from Figma component `Logo / Stahlmann Konditionstrainer` (based on Wortmarke 2, no icon tile). KONDITIONSTRAINER is enlarged so it ends at the right edge of STAHLMANN (client request). Web: `src/assets/icons/logo.svg` (wordmark in `currentColor`); print/business cards: `brand/logo-on-dark.svg`, `brand/logo-on-light.svg` (RGB – get CMYK/Pantone values from the printer) |
 | Favicon | Pulse tile (Figma Brand mark A) – `public/favicon.svg` |
 | Body font | Geist (picked over Archivo, Inter, IBM Plex Sans, Mona Sans) |
 | Story section | No overlaid badge – the patch is already on the vest in the photo |
@@ -60,6 +60,7 @@ src/
     Header, Footer, Logo, Button, SectionBar, Brackets
     sections/             Hero, Credentials, Story, Angebot, Preise, Kontakt
     archive/              Unused design directions (see archive/README.md)
+brand/                    Logo SVGs for print (on dark / on light)
 public/                   favicon.svg, apple-touch-icon.png, og-image.jpg, robots.txt, .htaccess
 LocalValetDriver.php      Herd: serves dist/ locally (not deployed)
 deploy.sh                 Build + rsync to Hostpoint (staging default, production TODO)
@@ -68,11 +69,11 @@ scripts/og-image.sh       `npm run og`: renders public/og-image.jpg
 
 ## Open before go-live
 
-- [ ] `src/site.ts`: real WhatsApp number (`WHATSAPP_NUMBER`, digits only, e.g. `41791234567`)
+- [x] `src/site.ts`: WhatsApp number (Thomas' mobile, assumed to be his WhatsApp too – confirm)
 - [ ] `src/site.ts`: Instagram URL
-- [ ] `src/site.ts`: Impressum address, e-mail, phone (currently `[Strasse Nr.]` etc.)
+- [x] `src/site.ts`: Impressum address, e-mail, phone (Seeblickstrasse 12b, 8918 Unterlunkhofen)
 - [ ] Datenschutz text is a first draft (Swiss DSG) – have it reviewed
-- [ ] Once the address is final: add it to the JSON-LD in `Layout.astro` (left out on purpose while placeholders)
+- [x] Address and phone in the JSON-LD in `Layout.astro`; packages priced "Auf Anfrage" carry no price there
 - [x] Share image `public/og-image.jpg` (1200×630) is rendered from `src/pages/og.astro` – re-render with `npm run og` if headline or photo change. `og:image` carries a content hash (`?v=…`) so messengers refetch it; WhatsApp also caches per page URL, so test with a fresh one (e.g. `/?x=2`)
 - [x] Staging live at https://stahlmann.ch.marceli.to, deployed with `./deploy.sh`
 - [ ] Production: set `HOST_PRODUCTION` / `WEBROOT_PRODUCTION` at the top of `deploy.sh`, then `./deploy.sh production`
@@ -84,6 +85,13 @@ scripts/og-image.sh       `npm run og`: renders public/og-image.jpg
 - Staging: `pumutuxu@marceli.to:/home/pumutuxu/www/stahlmann.ch/public` → https://stahlmann.ch.marceli.to; gets a `noindex` header and a blocking robots.txt
 - Production: not configured yet
 
+## Recent changes (23 Nov)
+
+- New SVG logo (see Design table), used in header, footer and share image; share image re-rendered
+- Client feedback applied in `content.ts`: stats labels (Sicherheitsbehörde, KFOR / NATO, American Football, Feuerwehr-Intervention), Über mich wording, new "Männersport" line, "Sportbetreuung" item in the Behörden and 10er-Abo packages, Premium-Coaching renamed to "Coaching nach Mass" and priced "Auf Anfrage", note "1 Session = 1 Lektion à 2 Stunden"
+- Coordinates in hero and footer: 47.1795°N 8.5553°E (from the client)
+- Real contact details; e-mail and phone are links
+
 ## Recent fixes (12 Nov)
 
 - Stats grid (Credentials) overflowed at 360–390px: smaller values with tight leading on phones, hyphenated labels
@@ -92,6 +100,9 @@ scripts/og-image.sh       `npm run og`: renders public/og-image.jpg
 - WhatsApp showed the apple-touch-icon instead of the share image (stale preview cache) – cache-busting query on `og:image`
 
 ## Next
+
+- Open questions sent to Thomas (`Fragen an Thomas.txt`): Premium title ("Coaching nach Mass" is our pick), session length wording, "Offensive Line", whether the Premium package features stay now that it is priced on request
+- Deploy the 23 Nov changes to staging (`./deploy.sh`)
 
 - Confirm on a phone that the header no longer jitters; if it does, turn off the `pulse-line` animation on the header next
 - Confirm the WhatsApp preview with a fresh URL

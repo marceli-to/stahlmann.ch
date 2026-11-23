@@ -27,6 +27,6 @@ Figma file "Stahlmann – Logo / Wortmarke": https://www.figma.com/design/esJLCE
 
 - fileKey: `esJLCEg4PyIGOxQUeooJxc`
 - Pages: **Website – Onepager** (desktop 1440) and **Brand** (logo/wordmark/icon)
-- Logo in use, "Wortmarke 2 – Mit Pulslinie": node `1:114` (pulse graphic `1:120`)
+- Logo in use: component "Logo / Stahlmann Konditionstrainer", node `17:46` (outlined, SVG/PDF export settings); based on the exploration "Wortmarke 2 – Mit Pulslinie", node `1:114`
 
 See `PROGRESS.md` for design decisions and current status.
