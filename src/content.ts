@@ -11,7 +11,7 @@ export const hero = {
 export const stats = [
   { value: '15 Jahre', label: 'Sicherheitsbehörde' },
   { value: '2×', label: 'Auslandseinsatz KFOR / NATO' },
-  { value: '30+ Jahre', label: 'Leistungssport: American Football' },
+  { value: '30+ Jahre', label: 'Leistungssport: American Football, Ironman, Marathon' },
   { value: 'Aktuell', label: 'Feuerwehr-Intervention' },
 ];
 
